@@ -22,4 +22,4 @@
   </section>
 
 </main>
-@endsection
+@endsection 

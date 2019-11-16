@@ -11,21 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/faq', function () {
   return view('faq');
 });
 //RUTA A fAQ , NO USA LOGICA
-
 Route::get('/contacto' , function () {
   return view('contacto');
 });
-// RUTA A CONTACTO , NO USA LOGICA
-Route::get('/prueba', 'ProductoController@listado');
+// RUTA A CONTACTO , NO USA LOGICA POR AHORA
+Route::get('/home', 'ProductoController@listado');
+Route::get('/home/{id}','ProductoController@buscarPorId');
+Route::get('eliminar','ProductoController@listado');
+// SUJETO A CAMBIOS
+Route::get('/eliminar/{id}','ProductoController@eliminarProducto');
+Route::get('/agregar','ProductoController@categoria');
+Route::post('/muestra','ProductoController@agregarProducto');

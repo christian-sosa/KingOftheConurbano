@@ -1,6 +1,6 @@
 @extends('layouts/Plantilla')
 
-@section('home')
+@section('muestra')
 <main>
 
 
