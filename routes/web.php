@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/faq', function () {
+  return view('faq');
+});
+//RUTA A fAQ , NO USA LOGICA
+
+Route::get('/contacto' , function () {
+  return view('contacto');
+});
+// RUTA A CONTACTO , NO USA LOGICA
+Route::get('/prueba', 'ProductoController@listado');
