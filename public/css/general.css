@@ -1,84 +1,6 @@
-header {
-  background-color: #000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 200;
-}
+@import url('header.css');
+@import url('footer.css');
 
-header nav ul {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-header nav ul .link-nav {
-  text-align: center;
-}
-
-header nav ul .link-nav.titulo {
-  width: 100%;
-  font-size: 30px;
-  color: #fff;
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
-
-header nav ul .link-nav.login, header nav ul .link-nav.logout {
-  width:  50;
-}
-
-main {
-  margin-top: 8rem;
-}
-
-@media (min-width: 482px) {
-  main {
-    margin-top: 9rem;
-  }
-}
-
-@media (min-width: 982px) {
-  main {
-    margin-top: 10rem;
-  }
-}
-
-footer nav ul div{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  background-color: #000;
-  padding: 2%;
-}
-
-
-footer nav ul li a {
-  color: #fff;
-}
-
-footer nav ul li:hover a {
-  color: darkgray;
-}
-
-.links {
-  border-bottom: 2px solid #fff;
-}
-
-.redes li i {
-  color: #fff;
-}
-
-.redes li:hover i {
-  color: darkgray;
-}
-
-@media (min-width: 982px) {
-  footer nav ul {
-    padding: 1%;
-  }
-}
 * {
   padding: 0;
   margin: 0;
@@ -107,11 +29,11 @@ ul, ol {
 }
 
 body {
-  background-image: url('../img/bkground.png');
+  background-image: url('/storage/bkground.png');
 }
 
 .boton {
-  background-image: url('../img/bkground.png');
+  background-image: url('/storage/bkground.png');
   text-align: center;
   border: 1px solid #000;
   padding: 0.6%;

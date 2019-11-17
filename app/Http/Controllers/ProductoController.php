@@ -11,14 +11,14 @@ class ProductoController extends Controller
 {
    public function listado()
    {
-   $productos = producto::all();
+   $productos = Producto::all();
    return view("home",compact("productos"));
    //MUESTRA EL HOME CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
    }
 
-   public function buscarPorId($id)
+   public function detalle($id)
    {
-     $producto = producto::find($id);
+     $producto = Producto::find($id);
      return view('detalle',compact('producto'));
      // BUSCA UN PRODUCTO POR ID Y LO DEVUELVE A UNA VISTAA
 
@@ -59,16 +59,10 @@ class ProductoController extends Controller
 
    public function eliminarProducto($id)
    {
-     $producto = producto::find($id);
+     $producto = Producto::find($id);
      $producto->delete();
      return redirect('home');
      //RECIBE ID , LO BUSCA Y SE VA DELETEADO
-   }
-
-   public function categoria(){
-     $categoria = categoria::all();
-
-     return view('agregar',compact('categoria'));
    }
 
 }
