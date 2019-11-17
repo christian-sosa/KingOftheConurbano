@@ -1,7 +1,7 @@
 @extends('layouts/Plantilla')
 
 
-@section('faq')
+@section('contenido')
 <main>
 <div class="container-faqs row">
 

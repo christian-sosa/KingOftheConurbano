@@ -21,15 +21,15 @@
         </div>
 
         <div class="link-nav">
-          <li><a href="no funciona">Home</a></li>
+          <li><a href="/home">Home</a></li>
         </div>
 
         <div class="link-nav">
-          <li><a href="faq">F.A.Q.</a></li>
+          <li><a href="/faq">F.A.Q.</a></li>
         </div>
 
         <div class="link-nav">
-          <li><a href="contacto">Contacto</a></li>
+          <li><a href="/contacto">Contacto</a></li>
         </div>
 
 
@@ -39,28 +39,24 @@
       </ul>
     </nav>
   </header>
-  @yield('faq')
-  @yield('contacto')
-  @yield('home')
-  @yield('detalle')
-  @yield('agregar')
-  @yield('muestra')
 
+  @yield('contenido')
+
+  <footer>
+    <nav>
+      <ul>
+        <div class="links">
+          <li><a href="/home">Home</a></li>
+          <li><a href="/faq">F.A.Q.</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+        </div>
+        <div class="redes">
+          <li><i class="fab fa-twitter-square"></i><a href="https://www.twitter.com">@kingoftheconurbano</a></li>
+          <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com">King of the Conurbano</a></li>
+          <li><i class="fab fa-facebook-square"></i><a href="https://www.facebook.com">King of the Conurbano</a></li>
+        </div>
+      </ul>
+    </nav>
+  </footer>
 </body>
-<footer>
-  <nav>
-    <ul>
-      <div class="links">
-        <li><a href="nofunciona">Home</a></li>
-        <li><a href="faq">F.A.Q.</a></li>
-        <li><a href="contacto">Contacto</a></li>
-      </div>
-      <div class="redes">
-        <li><i class="fab fa-twitter-square"></i><a href="https://www.twitter.com">@kingoftheconurbano</a></li>
-        <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com">King of the Conurbano</a></li>
-        <li><i class="fab fa-facebook-square"></i><a href="https://www.facebook.com">King of the Conurbano</a></li>
-      </div>
-    </ul>
-  </nav>
-</footer>
 </html>

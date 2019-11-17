@@ -1,6 +1,6 @@
 @extends('layouts/Plantilla')
 
-@section('detalle')
+@section('contenido')
 <main>
   <section class="productos">
     <article class="producto">

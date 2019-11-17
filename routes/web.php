@@ -22,9 +22,18 @@ Route::get('/contacto' , function () {
 });
 // RUTA A CONTACTO , NO USA LOGICA POR AHORA
 Route::get('/home', 'ProductoController@listado');
+
 Route::get('/home/{id}','ProductoController@buscarPorId');
 Route::get('eliminar','ProductoController@listado');
 // SUJETO A CAMBIOS
 Route::get('/eliminar/{id}','ProductoController@eliminarProducto');
-Route::get('/agregar','ProductoController@categoria');
+
+Route::get('/agregar', function() {
+  $categorias = \App\Categoria::all();
+
+  return view('agregar', compact('categorias'));
+});
+
+Route::post('/agregar', 'ProductoController@agregar');
+
 Route::post('/muestra','ProductoController@agregarProducto');

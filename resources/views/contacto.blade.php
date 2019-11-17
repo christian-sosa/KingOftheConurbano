@@ -1,6 +1,6 @@
 @extends('layouts/Plantilla')
 
-@section('contacto')
+@section('contenido')
 <main>
 
         <form class="" action="contacto.php"  method="post">

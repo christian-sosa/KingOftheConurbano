@@ -1,6 +1,6 @@
 @extends('layouts/Plantilla')
 
-@section('home')
+@section('contenido')
 <main>
 
 
@@ -22,4 +22,4 @@
   </section>
 
 </main>
-@endsection 
+@endsection
