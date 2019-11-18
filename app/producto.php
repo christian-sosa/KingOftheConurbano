@@ -10,4 +10,10 @@ class Producto extends Model
   public $id = "id";
   public $timestamps = False;
   public $guarded = [];
+
+  public function categoria()
+  {
+    return $this->belongsTo(Categoria::class, 'categoria_id');
+  }
+
 }

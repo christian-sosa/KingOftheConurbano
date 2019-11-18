@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public $table = "usuarios";
+    public $id = "id";
+    public $timestamps = False;
+    public $guarded = [];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,4 +41,3 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-}

@@ -35,4 +35,7 @@ Route::get('/agregar', function() {
 
 Route::post('/agregar', 'ProductoController@agregar');
 
-Route::post('/muestra','ProductoController@agregarProducto');
+Route::get('/home/filtrado/{categoria}','ProductoController@filtrarCategoria');
+Route::prefix('usuarios')->group(function() {
+  Auth::routes();
+});

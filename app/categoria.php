@@ -10,4 +10,11 @@ class Categoria extends Model
     public $id = "id";
     public $timestamps = False;
     public $guarded = [];
+
+    public function productos()
+    {
+      return $this->hasMany(Producto::class, 'categoria_id');
+    }
+
+
 }

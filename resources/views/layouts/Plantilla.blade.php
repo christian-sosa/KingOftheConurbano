@@ -31,16 +31,12 @@
         <div class="link-nav">
           <li><a href="/contacto">Contacto</a></li>
         </div>
-
-
-
-
-
       </ul>
     </nav>
   </header>
 
   @yield('contenido')
+  @yield('content')
 
   <footer>
     <nav>

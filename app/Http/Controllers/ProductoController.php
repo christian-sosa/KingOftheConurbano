@@ -11,7 +11,7 @@ class ProductoController extends Controller
 {
    public function listado()
    {
-   $productos = Producto::all();
+   $productos = Producto::paginate(6);
    return view("home",compact("productos"));
    //MUESTRA EL HOME CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
    }
@@ -64,5 +64,16 @@ class ProductoController extends Controller
      return redirect('home');
      //RECIBE ID , LO BUSCA Y SE VA DELETEADO
    }
+
+   public function filtrarCategoria($categoria_id)
+   {
+     $categoria = Categoria::find($categoria_id);
+     $productos = $categoria->productos;
+     return view('home', compact('productos'));
+     // RECIBE LA CATEGORIA , BUSCA TODOS LOS PRODUCTOS
+     //Y LOS MANDA AL HOME
+   }
+
+
 
 }
