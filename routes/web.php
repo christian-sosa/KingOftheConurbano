@@ -26,7 +26,7 @@ Route::get('/home/{id}','ProductoController@detalle');
 
 Route::get('eliminar','ProductoController@listado');
 // SUJETO A CAMBIOS
-Route::get('/eliminar/{id}','ProductoController@eliminarProducto');
+Route::get('/eliminar/{nombre}','ProductoController@eliminarProducto');
 
 Route::get('/agregar', function() {
   $categorias = \App\Categoria::all();
@@ -39,3 +39,11 @@ Route::get('/home/filtrado/{categoria}','ProductoController@filtrarCategoria');
 Route::prefix('usuarios')->group(function() {
   Auth::routes();
 });
+
+Route::get('/gestor', 'ProductoController@listado2');
+Route::get('/modificar/{id}',function($id){
+  $producto = \App\Producto::find($id);
+  $categorias = \App\Categoria::all();
+  return view('modificar',compact('producto','categorias'));
+});
+Route::post('/modificar', 'ProductoController@modificarProducto');

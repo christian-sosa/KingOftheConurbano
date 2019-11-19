@@ -15,6 +15,13 @@ class ProductoController extends Controller
    return view("home",compact("productos"));
    //MUESTRA EL HOME CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
    }
+   public function listado2()
+   {
+   $productos = Producto::paginate(6);
+   return view("gestor",compact("productos"));
+   //MUESTRA EL GESTOR CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
+   //SUJETO A CAMBIOS
+   }
 
    public function detalle($id)
    {
@@ -27,13 +34,14 @@ class ProductoController extends Controller
    {
      $this->validate($req,
      [
-      'nombre'=>'required|string|max:20',
+      'nombre'=>'unique|required|string|max:20',
       'descripcion'=>'required|string|max:100',
       'precio'=>'required|integer|min:0',
       'imagen' => 'required|mimes:jpeg,jpg,png|file',
       'categoria_id' => 'integer'
     ],
     [
+      'unique'=>'El campo :attribute es requerido',
       'required'=>'El campo :attribute es requerido',
       'max'=>'El campo :attribute excede los caracteres maximos (:max)',
       'min'=>'El campo :attribute no cumple con el minimo requerido (:min)',
@@ -59,9 +67,10 @@ class ProductoController extends Controller
 
    public function eliminarProducto($id)
    {
-     $producto = Producto::find($id);
+     $producto = Producto::where('id','=',$id);
      $producto->delete();
-     return redirect('home');
+
+     return redirect('gestor');
      //RECIBE ID , LO BUSCA Y SE VA DELETEADO
    }
 
@@ -71,5 +80,40 @@ class ProductoController extends Controller
      return view('home', compact('productos'));
      // RECIBE LA CATEGORIA , BUSCA TODOS LOS PRODUCTOS DE ESA CATEGORIA
      //Y LOS MANDA AL HOME
+   }
+
+   public function modificarProducto(Request $req)
+   {
+     $this->validate($req,
+     [
+      'nombre'=>'unique:productos|required|string|max:20',
+      'descripcion'=>'required|string|max:100',
+      'precio'=>'required|integer|min:0',
+      'imagen' => 'required|mimes:jpeg,jpg,png|file',
+      'categoria_id' => 'integer'
+    ],
+    [
+      'unique'=>'El campo :attribute es requerido',
+      'required'=>'El campo :attribute es requerido',
+      'max'=>'El campo :attribute excede los caracteres maximos (:max)',
+      'min'=>'El campo :attribute no cumple con el minimo requerido (:min)',
+      'integer'=>'El campo :attribute debe ser un numero entero',
+      'mimes'=>'El campo :attribute solo puede ser png,jpg o jpeg',
+      'file'=>'El campo :attribute debe ser un archivo'
+    ]);
+
+    $producto = Producto::where('categoria_id','=',$req['categoria_id'])->first();
+    $producto->nombre = $req["nombre"];
+    $producto->precio = $req['precio'];
+    $producto->descripcion = $req['descripcion'];
+    $producto->categoria_id = $req['categoria_id'];
+    $producto->imagen = basename($req->file('imagen')->store('public'));
+
+    $producto->save();
+
+
+    return redirect('/home');
+
+
    }
 }
