@@ -19,7 +19,7 @@ class ProductoController extends Controller
    public function detalle($id)
    {
      $producto = Producto::find($id);
-     return view('detalle',compact('producto'));
+     return view('detalle', compact('producto'));
      // BUSCA UN PRODUCTO POR ID Y LO DEVUELVE A UNA VISTAA
 
    }
@@ -67,8 +67,7 @@ class ProductoController extends Controller
 
    public function filtrarCategoria($categoria_id)
    {
-     $categoria = Categoria::find($categoria_id);
-     $productos = $categoria->productos;
+     $productos = Producto::where('categoria_id','=',$categoria_id)->paginate(1);
      return view('home', compact('productos'));
      // RECIBE LA CATEGORIA , BUSCA TODOS LOS PRODUCTOS
      //Y LOS MANDA AL HOME

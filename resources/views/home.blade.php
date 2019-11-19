@@ -7,7 +7,7 @@
     @foreach ($productos as $producto)
       <article class="producto">
         <div class="imagen-producto">
-          <img src="/storage/{{$producto->imagen}}">
+          <img src="/storage/productos/{{$producto->imagen}}">
         </div>
         <div class="nombre-mas-precio">
           <div class="nombre"><h4>{{$producto->nombre}}</h4></div>
