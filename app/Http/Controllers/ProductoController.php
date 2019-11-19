@@ -67,12 +67,9 @@ class ProductoController extends Controller
 
    public function filtrarCategoria($categoria_id)
    {
-     $productos = Producto::where('categoria_id','=',$categoria_id)->paginate(1);
+     $productos = Producto::where('categoria_id','=',$categoria_id)->paginate(6);
      return view('home', compact('productos'));
-     // RECIBE LA CATEGORIA , BUSCA TODOS LOS PRODUCTOS
+     // RECIBE LA CATEGORIA , BUSCA TODOS LOS PRODUCTOS DE ESA CATEGORIA
      //Y LOS MANDA AL HOME
    }
-
-
-
 }
