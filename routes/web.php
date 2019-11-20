@@ -13,37 +13,14 @@
 
 
 Auth::routes();
-Route::get('/faq', function () {
-  return view('faq');
-});
-//RUTA A fAQ , NO USA LOGICA
-Route::get('/contacto' , function () {
-  return view('contacto');
-});
-// RUTA A CONTACTO , NO USA LOGICA POR AHORA
+Route::get('/faq', 'ProductoController@faq');
+Route::get('/contacto' , 'ProductoController@contacto');
 Route::get('/home', 'ProductoController@listado');
 Route::get('/home/{id}','ProductoController@detalle');
-
-Route::get('eliminar','ProductoController@listado');
-// SUJETO A CAMBIOS
 Route::get('/eliminar/{nombre}','ProductoController@eliminarProducto');
-
-Route::get('/agregar', function() {
-  $categorias = \App\Categoria::all();
-  return view('agregar', compact('categorias'));
-});
-
+Route::get('/agregar', 'ProductoController@enviarCategorias');
 Route::post('/agregar', 'ProductoController@agregar');
-
 Route::get('/home/filtrado/{categoria}','ProductoController@filtrarCategoria');
-Route::prefix('usuarios')->group(function() {
-  Auth::routes();
-});
-
 Route::get('/gestor', 'ProductoController@listado2');
-Route::get('/modificar/{id}',function($id){
-  $producto = \App\Producto::find($id);
-  $categorias = \App\Categoria::all();
-  return view('modificar',compact('producto','categorias'));
-});
+Route::get('/modificar/{id}','ProductoController@productoYcategoria');
 Route::post('/modificar', 'ProductoController@modificarProducto');
