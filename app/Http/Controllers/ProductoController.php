@@ -30,7 +30,7 @@ class ProductoController extends Controller
      // BUSCA UN PRODUCTO POR ID Y LO DEVUELVE A UNA VISTAA
 
    }
-   public function agregar(Request $req)
+   public function guardarProducto(Request $req)
    {
      $this->validate($req,
      [
@@ -118,7 +118,7 @@ class ProductoController extends Controller
      $categorias = \App\Categoria::all();
      return view('modificar',compact('producto','categorias'));
    }
-   public function enviarCategorias()
+   public function agregarProducto()
    {
      $categorias = \App\Categoria::all();
      return view('agregar', compact('categorias'));
