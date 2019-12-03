@@ -24,3 +24,4 @@ Route::get('/home/filtrado/{categoria}','ProductoController@filtrarCategoria');
 Route::get('/gestor', 'ProductoController@listado2');
 Route::get('/modificar/{id}','ProductoController@productoYcategoria');
 Route::post('/modificar', 'ProductoController@modificarProducto');
+Route::get('/carrito/{id}','ProductosController@mostrarCarrito');

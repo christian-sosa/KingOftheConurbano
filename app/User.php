@@ -15,6 +15,12 @@ class User extends Authenticatable
     public $timestamps = False;
     public $guarded = [];
 
+
+    public function carrito()
+    {
+      return $this->belongsTo(Carrito::class,'usuario_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -41,3 +47,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+}
