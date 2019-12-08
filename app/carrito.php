@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Carrito extends Model
 {
     public $table = "carrito";
-    public $id = "id";
-    public $timestamps = False;
     public $guarded = [];
 
     public function user()

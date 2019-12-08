@@ -46,3 +46,19 @@ body {
 .boton:hover a {
   color: #343a40;
 }
+
+
+main {
+  margin-top: 8rem;
+}
+
+@media (min-width: 482px) {
+  main {
+    margin-top: 9rem;
+  }
+}
+
+@media (min-width: 982px) {
+  main {
+    margin-top: 10rem;
+  }

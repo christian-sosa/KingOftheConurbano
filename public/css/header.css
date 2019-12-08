@@ -25,23 +25,3 @@ header nav ul .link-nav.titulo {
   margin-top: 2%;
   margin-bottom: 2%;
 }
-
-header nav ul .link-nav.login, header nav ul .link-nav.logout {
-  width:  50;
-}
-
-main {
-  margin-top: 8rem;
-}
-
-@media (min-width: 482px) {
-  main {
-    margin-top: 9rem;
-  }
-}
-
-@media (min-width: 982px) {
-  main {
-    margin-top: 10rem;
-  }
-}

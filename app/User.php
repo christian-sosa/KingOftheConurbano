@@ -10,11 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public $table = "usuarios";
-    public $id = "id";
-    public $timestamps = False;
     public $guarded = [];
-
 
     public function carrito()
     {
@@ -27,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'telefono', 'fecha_nac', 'avatar',
     ];
 
     /**

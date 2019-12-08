@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
   public $table = "productos";
-  public $timestamps = False;
   public $guarded = [];
 
   public function categoria()
@@ -16,7 +15,7 @@ class Producto extends Model
   }
   public function carrito()
   {
-    return $this->belongsTo(Carrito:class, 'producto_id');
+    return $this->belongsTo(Carrito::class, 'producto_id');
   }
 
 }

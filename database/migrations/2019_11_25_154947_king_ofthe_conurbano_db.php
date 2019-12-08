@@ -17,6 +17,7 @@ class KingOftheConurbanoDb extends Migration
         $table->engine = 'InnoDB';
         $table->bigIncrements('id');
         $table->string('nombre');
+        $table->timestamps();
       });
       Schema::create('productos', function (Blueprint $table){
         $table->engine = 'InnoDB';
@@ -39,6 +40,7 @@ class KingOftheConurbanoDb extends Migration
         $table->bigInteger('producto_id')->unsigned()->index();
         $table->foreign('usuario_id')->references('id')->on('users');
         $table->foreign('producto_id')->references('id')->on('productos');
+        $table->timestamps();
       });
     }
 
@@ -49,6 +51,8 @@ class KingOftheConurbanoDb extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('carrito');
+        Schema::dropIfExists('productos');
+        Schema::dropIfExists('categorias');
     }
 }

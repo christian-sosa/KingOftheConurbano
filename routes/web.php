@@ -13,6 +13,7 @@
 
 
 Auth::routes();
+Route::get('/', 'ProductoController@listado');
 Route::get('/faq', 'ProductoController@faq');
 Route::get('/contacto' , 'ProductoController@contacto');
 Route::get('/home', 'ProductoController@listado');
@@ -25,3 +26,6 @@ Route::get('/gestor', 'ProductoController@listado2');
 Route::get('/modificar/{id}','ProductoController@productoYcategoria');
 Route::post('/modificar', 'ProductoController@modificarProducto');
 Route::get('/carrito/{id}','ProductosController@mostrarCarrito');
+Route::get('/perfil', function() {
+  return view('perfil');
+});
