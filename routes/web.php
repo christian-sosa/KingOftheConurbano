@@ -26,6 +26,4 @@ Route::get('/gestor', 'ProductoController@listado2');
 Route::get('/modificar/{id}','ProductoController@productoYcategoria');
 Route::post('/modificar', 'ProductoController@modificarProducto');
 Route::get('/carrito/{id}','ProductosController@mostrarCarrito');
-Route::get('/perfil', function() {
-  return view('perfil');
-});
+Route::get('/perfil', 'UsuarioController@perfil');
