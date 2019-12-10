@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h4>Nombre: {{$user->name}}</h4>
-    <h4>Email: {{$user->email}}</h4>
-    <h4>Fecha de nacimiento: {{$user->fecha_nac}}</h4>
-    <h4>Telefono: {{$user->telefono}}</h4>
-    <img src="/storage/{{$user->avatar}}" alt="">
-  </body>
-</html>
+@extends('layouts/Plantilla')
+
+@section('css')
+<link rel="stylesheet" href="/css/perfil.css">
+@endsection
+
+@section('contenido')
+<div class="container">
+  <main>
+    <div class="card">
+      <img src="/storage/{{$user->avatar}}" class="card-img-top" alt="avatar">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item name"><span class="card-text">{{$user->name}}</span><span>Editar</span></li>
+        <li class="list-group-item email"><span class="card-text">{{$user->email}}</span><span>Editar</span></li>
+        <li class="list-group-item fecha_nac"><span class="card-text">{{$user->fecha_nac}}</span><span>Editar</span></li>
+        <li class="list-group-item telefono"><span class="card-text">{{$user->telefono}}</span><span>Editar</span></li>
+      </ul>
+    </div>
+  </main>
+</div>
+@endsection

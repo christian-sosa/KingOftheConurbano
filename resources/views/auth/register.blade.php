@@ -1,6 +1,6 @@
 @extends('layouts/Plantilla')
 
-@section('content')
+@section('contenido')
 <div class="container">
   <main>
     <div class="row justify-content-center">
