@@ -11,13 +11,13 @@ class ProductoController extends Controller
 {
    public function listado()
    {
-   $productos = Producto::paginate(6);
+   $productos = Producto::paginate(9);
    return view("home",compact("productos"));
    //MUESTRA EL HOME CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
    }
    public function listado2()
    {
-   $productos = Producto::paginate(6);
+   $productos = Producto::paginate(9);
    return view("gestor",compact("productos"));
    //MUESTRA EL GESTOR CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
    //SUJETO A CAMBIOS

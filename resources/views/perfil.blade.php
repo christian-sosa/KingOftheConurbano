@@ -7,15 +7,27 @@
 @section('contenido')
 <div class="container">
   <main>
-    <div class="card">
+    <form class="card" action="/perfil" method="post">
       <img src="/storage/{{$user->avatar}}" class="card-img-top" alt="avatar">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item name"><span class="card-text">{{$user->name}}</span><span>Editar</span></li>
-        <li class="list-group-item email"><span class="card-text">{{$user->email}}</span><span>Editar</span></li>
-        <li class="list-group-item fecha_nac"><span class="card-text">{{$user->fecha_nac}}</span><span>Editar</span></li>
-        <li class="list-group-item telefono"><span class="card-text">{{$user->telefono}}</span><span>Editar</span></li>
+        <li class="list-group-item name" onclick='modificar("name")'>
+          <span class="card-text">{{$user->name}}</span><span>Editar</span>
+        </li>
+        <li class="list-group-item email" onclick='modificar("email")'>
+          <span class="card-text">{{$user->email}}</span><span>Editar</span>
+        </li>
+        <li class="list-group-item fecha_nac" onclick='modificar("fecha_nac")'><span class="card-text">
+          {{$user->fecha_nac}}</span><span>Editar</span>
+        </li>
+        <li class="list-group-item telefono" onclick='modificar("telefono")'>
+          <span class="card-text">{{$user->telefono}}</span><span>Editar</span>
+        </li>
       </ul>
-    </div>
+    </form>
   </main>
 </div>
+@endsection
+
+@section('script')
+<script src='/js/perfil.js'></script>
 @endsection

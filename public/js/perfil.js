@@ -1,113 +1,65 @@
-var elementos = document.querySelectorAll('li.list-group-item');
+function modificar(campo) {
+  var li = document.querySelector('li.' + campo)
+  li.onclick = ''
 
-activarOnClicks();
+  var valor = li.querySelector('span.card-text').innerHTML
 
-function modificarCampo() {
-  desactivarOnClicks();
+  if(valor == '')
+    valor = 'Sin asignar'
 
-  this.classList.add('modificando');
+  var p = document.createElement('p')
 
-  var campo = getCampo(this);
+  var labelValorAntiguo = document.createElement('label')
+  labelValorAntiguo.setAttribute('for', campo)
+  labelValorAntiguo.innerHTML = 'Actual: ' + valor
 
-  var label = document.createElement('label');
-  label.setAttribute('for', campo);
-  label.innerHTML = getTexto(campo)
+  var labelCampo = document.createElement('label')
+  labelCampo.setAttribute('for', campo)
+  labelCampo.innerHTML = 'Nuevo'
 
-  var input = document.createElement('input');
-  input.setAttribute('type', 'text');
-  input.setAttribute('id', campo);
-  input.setAttribute('name', campo);
-  input.setAttribute('value', this.querySelector('span.card-text').innerHTML);
-  input.onchange = function() { hayModificaciones(); };
+  var input = document.createElement('input')
+  input.setAttribute('name', campo)
+  input.setAttribute('id', campo)
 
-  var boton = document.createElement('button');
-  boton.setAttribute('type', 'submit');
-  boton.innerHTML = 'Confirmar';
-  boton.onclick = confirmarCambios;
+  if(campo == 'fecha_nac') {
+    p.innerHTML = 'Fecha de nacimiento'
+    input.setAttribute('type', 'date')
+  } else if(campo == 'telefono') {
+    p.innerHTML = 'Telefono'
+    input.setAttribute('type', 'tel')
+  } else {
+    if(campo == 'name')
+      p.innerHTML = 'Nombre'
+    else
+      p.innerHTML = 'Email'
 
-  this.innerHTML = '';
-  this.append(label);
-  this.append(input);
-  this.append(boton);
-}
-
-function confirmarCambios() {
-  var elemento = document.querySelector('li.list-group-item.modificando');
-
-  var contenido = document.createElement('span');
-  contenido.setAttribute('class', 'card-text');
-  contenido.innerHTML = elemento.querySelector('input').value;
-
-  var editar = document.createElement('span');
-  editar.innerHTML = 'Editar';
-
-  elemento.innerHTML = '';
-  elemento.append(contenido);
-  elemento.append(editar);
-  elemento.classList.remove('modificando');
-  elemento.onclick = function() { activarOnClicks(); };
-}
-
-function hayModificaciones() {
-  var card = document.querySelector('div.card');
-
-  var form = card.querySelector('form');
-
-  if(form.querySelector('button') == null) {
-    var button = document.createElement('button');
-    button.setAttribute('type', 'submit');
-    button.innerHTML = 'Revisar y guardar cambios';
-    button.onclick = function () {
-        for(var elemento of elementos) {
-          var input = document.createElement('input');
-          input.setAttribute('type', 'hidden');
-          input.setAttribute('name', getCampo(elemento));
-          input.value = elemento.querySelector('span.card-text').innerHTML;
-          console.log(input);
-          form.append(input);
-        }
-    }
-
-    form.append(button);
-  }
-}
-
-function activarOnClicks() {
-  for(var elemento of elementos) {
-    elemento.onclick = modificarCampo;
-  }
-}
-
-function desactivarOnClicks() {
-  for(var elemento of elementos) {
-    elemento.onclick = '';
-  }
-}
-
-function getCampo(elemento) {
-  var campos = ['name', 'email', 'fecha_nac', 'telefono'];
-  var campo;
-  var indice = 0;
-  var encontrado = false;
-
-  while(!encontrado && indice < campos.length) {
-    if(elemento.classList.contains(campos[indice])) {
-      campo = campos[indice];
-      encontrado = true;
-    }
-    indice++;
+    input.setAttribute('type', 'text')
   }
 
-  return campo;
+  var button = document.createElement('button')
+  button.setAttribute('type', 'button')
+  button.innerHTML = 'Confirmar'
+  button.onclick = function() { aplicar(li, input) }
+
+  li.innerHTML = ''
+  li.append(p)
+  li.append(labelValorAntiguo)
+  li.append(labelCampo)
+  li.append(input)
+  li.append(button)
 }
 
-function getTexto(texto) {
-  if(texto == 'name')
-    return 'Nombre';
-  else if(texto == 'email')
-    return 'Email';
-  else if(texto == 'fecha_nac')
-    return 'Fecha de nacimiento';
-  else if(texto == 'telefono')
-    return 'Numero de telefono'
+function aplicar(li, input) {
+  var valor = input.value
+
+  var texto = document.createElement('span')
+  texto.setAttribute('class', 'card-text')
+  texto.innerHTML = valor
+
+  var editar = document.createElement('span')
+  editar.innerHTML = 'Editar'
+
+  li.innerHTML = ''
+  li.append(texto)
+  li.append(editar)
 }
