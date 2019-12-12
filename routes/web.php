@@ -28,3 +28,6 @@ Route::post('/modificar', 'ProductoController@modificarProducto');
 Route::get('/carrito/{id}','ProductosController@mostrarCarrito');
 Route::get('/perfil', 'UsuarioController@perfil');
 Route::post('/perfil', 'UsuarioController@actualizarInfoUsuario');
+Route::get('/usuarios', 'UsuarioController@listaUsuarios');
+Route::get('/usuario/{id}', 'UsuarioController@mostrarUsuario');
+Route::get('/usuario/esadmin/{id}', 'UsuarioController@darAdmin');

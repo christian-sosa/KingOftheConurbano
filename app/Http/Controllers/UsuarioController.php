@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -42,5 +42,23 @@ class UsuarioController extends Controller
      $usuario->save();
 
      return redirect('/perfil');
+    }
+
+    public function listaUsuarios()
+    {
+      $usuarios = User::paginate(9);
+      return view("usuarios",compact("usuarios"));
+    }
+
+    public function mostrarUsuario($id)
+    {
+      $usuario = User::find($id);
+      return view('detalle2',compact("usuario"));
+    }
+    public function darAdmin($id)
+    {
+      $usuario = User::find($id);
+      $usuario->es_admin = 1;
+      return view('detalle2', compact("usuario"));
     }
 }
