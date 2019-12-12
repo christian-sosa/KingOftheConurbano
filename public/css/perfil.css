@@ -1,8 +1,27 @@
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .card {
-  width: 50%;
+  width: 40%;
+  padding: 2%;
   text-align: center;
 }
 
 .card img {
   width: 100%;
+}
+
+.modify {
+  width: 40%;
+  display: none;
+}
+
+.modify div li.list-group-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
