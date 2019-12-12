@@ -33,35 +33,39 @@
             <li><a href="/contacto">Contacto</a></li>
           </div>
 
+          @if (Auth::user())
           <div class="link-nav">
-            <li><a href=
-              @if (Auth::user())
-                {{ '/perfil' }}
-              @else
-                {{ route('login') }}
-              @endif
-              >
-              <!--
-                <i class="fas fa-user-alt"></i></a>
-              -->
-              Perfil
-            </a></li>
+            <li><a href="/perfil">Perfil</a></li>
           </div>
 
-          @if (Auth::user())
-            <div class="link-nav">
-              <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-              document.getElementById('logout-form').submit();">
-              {{ __('Logout') }}
-                <i class="fas fa-sign-out-alt"></i>
-              </a>
+          <div class="link-nav">
+            <li><a href="/gestor">Gestor de productos</a></li>
+          </div>
+          <div class="link-nav">
+            <li><a href="/usuarios">Gestor de usuarios</a></li>
+          </div>
 
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-              </form>
-            </div>
+          <div class="link-nav">
+            <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+              <i class="fas fa-sign-out-alt"></i>
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+          </div>
+
+          @else
+          <div class="link-nav">
+            <li><a href="{{ route('login') }}">Login</a></li>
+          </div>
           @endif
+
+
+
 
         </ul>
       </nav>
