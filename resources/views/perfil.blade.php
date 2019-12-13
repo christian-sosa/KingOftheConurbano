@@ -43,7 +43,7 @@
       </ul>
     </div>
 
-    <div class="card modify" id="form-card">
+    <div class="card modify" id="form-card" style="@if($errors->isEmpty()) {{'display:none;'}} @else {{'display:block;'}} @endif">
       <li class="list-group-item">
         <span class="card-text"><b>Cambios</b></span>
       </li>
@@ -51,14 +51,14 @@
         @csrf
         <div id="form-imgContainer">
           <label for="avatar"><img src="/storage/default.jpg" id="form-img" alt=""></label>
-          <input type="file" name="avatar" id="avatar" style="display:none;">
+          <input type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar" id="avatar" style="display:none;">
         </div>
         <ul class="list-group list-group-flush">
 
           <div id="form-name">
             <li class="list-group-item">
               <label for="name">Nombre:</label>
-              <input type="text" name="name" id="name" value="{{ old('name') }}">
+              <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}">
               @error('name')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -68,21 +68,22 @@
           </div>
 
           <div id="form-email">
-            <li class="list-group-item">
+            <div class="list-group-item">
               <label for="email">Email:</label>
-              <input type="text" name="email" id="email" value="{{ old('email') }}">
-            </li>
-            @error('email')
+              <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}">
+
+              @error('email')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
               </span>
-            @enderror
+              @enderror
+            </div>
           </div>
 
           <div id="form-date">
             <li class="list-group-item">
               <label for="fecha_nac">Fecha de nacimiento:</label>
-              <input type="date" name="fecha_nac" id="fecha_nac" value="{{ old('fecha_nac') }}">
+              <input type="date" class="form-control @error('fecha_nac') is-invalid @enderror" name="fecha_nac" id="fecha_nac" value="{{ old('fecha_nac') }}">
             </li>
             @error('fecha_nac')
               <span class="invalid-feedback" role="alert">
@@ -94,7 +95,7 @@
           <div id="form-phone">
             <li class="list-group-item">
               <label for="telefono">Telefono:</label>
-              <input type="tel" name="telefono" id="telefono" value="{{ old('telefono') }}">
+              <input type="tel" class="form-control @error('telefono') is-invalid @enderror" name="telefono" id="telefono" value="{{ old('telefono') }}">
             </li>
             @error('telefono')
               <span class="invalid-feedback" role="alert">
