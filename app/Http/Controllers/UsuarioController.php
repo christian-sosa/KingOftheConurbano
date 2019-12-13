@@ -58,12 +58,23 @@ class UsuarioController extends Controller
     public function mostrarUsuario($id)
     {
       $usuario = User::find($id);
-      return view('detalle2',compact("usuario"));
+      return view('detalleusuario',compact("usuario"));
     }
     public function darAdmin($id)
     {
       $usuario = User::find($id);
       $usuario->es_admin = 1;
-      return view('detalle2', compact("usuario"));
+      $usuario->save();
+      $usuarios = User::paginate(9);
+      return view("usuarios",compact("usuarios"));
+    }
+
+    public function quitarAdmin($id)
+    {
+      $usuario = User::find($id);
+      $usuario->es_admin = 0;
+      $usuario->save();
+      $usuarios = User::paginate(9);
+      return view("usuarios",compact("usuarios"));
     }
 }

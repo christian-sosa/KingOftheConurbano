@@ -2,6 +2,7 @@
 
 @section('contenido')
 <main>
+  <button type="button" class="boton"><a href="/gestorproducto"><i class="fas fa-arrow-left"></i>Volver</a></button>
   <form class="" action="/agregar" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
     <div class="titulo row">

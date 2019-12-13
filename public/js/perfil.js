@@ -5,10 +5,6 @@ const slideButton = document.querySelector('button#slide');
 const formImg = document.getElementById('form-img');
 const formImgInput = document.getElementById('avatar');
 
-if(formCard.style.display == 'block') {
-  setFormDimensions();
-}
-
 var errors = {};
 
 slideButton.onclick = showForm;
@@ -66,6 +62,7 @@ function validateDate(date) {
   var year = '';
   var month = '';
   var day = '';
+  var actualDate = new Date();
 
   for(var i = 0; i < 10; i++) {
     if(i < 4)
@@ -76,26 +73,14 @@ function validateDate(date) {
       day += date[i].toString();
   }
 
-  var userBirthDay = {
-    year : parseInt(year),
-    month : parseInt(month),
-    day : parseInt(day)
-  }
+  if(actualDate.getFullYear() - 18 < parseInt(year) || parseInt(year) > actualDate.getFullYear())
+    return false
+  if(actualDate.getMonth() < parseInt(month) && actualDate.getFullYear() < parseInt(year))
+    return false
+  if(actualDate.getDay() < parseInt(day) && actualDate.getMonth() < parseInt(month) && actualDate.getFullYear() < parseInt(year))
+    return false
 
-  return (plus18(userBirthDay) && validDate(userBirthDay));
-}
-
-function plus18(userBirthDay) {
-  var actualDate = new Date();
-
-  return  ( ( ( userBirthDay.year + 18 ) <= actualDate.getFullYear() ) );
-}
-
-function validDate(userBirthDay) {
-  var actualDate = new Date();
-
-  return  ( ( userBirthDay.year > ( actualDate.getFullYear() - 100 ) ) &&
-            ( actualDate.getFullYear() < userBirthDay.year ) );
+  return true;
 }
 
 function validatePhone(phone) {

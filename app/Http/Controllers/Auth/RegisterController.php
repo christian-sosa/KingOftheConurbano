@@ -83,6 +83,6 @@ class RegisterController extends Controller
       if($request->file('avatar'))
         return basename($request->file('avatar')->store('public'));
 
-      return 'default.jpg';
+      return 'default.png';
     }
 }

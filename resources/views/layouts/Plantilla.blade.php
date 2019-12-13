@@ -39,12 +39,8 @@
           </div>
 
           <div class="link-nav">
-            <li><a href="/gestor">Gestor de productos</a></li>
+            <li><a href="/gestor">Gestor</a></li>
           </div>
-          <div class="link-nav">
-            <li><a href="/usuarios">Gestor de usuarios</a></li>
-          </div>
-
           <div class="link-nav">
             <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
@@ -61,6 +57,9 @@
           @else
           <div class="link-nav">
             <li><a href="{{ route('login') }}">Login</a></li>
+          </div>
+          <div class="link-nav">
+            <li><a href="{{ route('register') }}">Register</a></li>
           </div>
           @endif
 

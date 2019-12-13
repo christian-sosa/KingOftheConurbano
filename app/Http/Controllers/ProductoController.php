@@ -18,7 +18,7 @@ class ProductoController extends Controller
    public function listado2()
    {
    $productos = Producto::paginate(9);
-   return view("gestor",compact("productos"));
+   return view("gestorproducto",compact("productos"));
    //MUESTRA EL GESTOR CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
    //SUJETO A CAMBIOS
    }
@@ -69,7 +69,7 @@ class ProductoController extends Controller
      $producto = Producto::where('id','=',$id);
      $producto->delete();
 
-     return redirect('gestor');
+     return redirect('gestorproducto');
      //RECIBE ID , LO BUSCA Y SE VA DELETEADO
    }
 
@@ -85,14 +85,15 @@ class ProductoController extends Controller
    {
      $this->validate($req,
      [
-      'nombre'=>'unique:productos|string|max:20|nullable',
-      'descripcion'=>'string|max:100|nullable',
-      'precio'=>'integer|min:0|nullable',
-      'imagen' => 'mimes:jpeg,jpg,png|file|nullable',
+      'nombre'=>'unique:productos|required|string|max:20',
+      'descripcion'=>'required|string|max:100',
+      'precio'=>'required|integer|min:0',
+      'imagen' => 'required|mimes:jpeg,jpg,png|file',
       'categoria_id' => 'integer'
     ],
     [
       'unique'=>'El campo :attribute es requerido',
+      'required'=>'El campo :attribute es requerido',
       'max'=>'El campo :attribute excede los caracteres maximos (:max)',
       'min'=>'El campo :attribute no cumple con el minimo requerido (:min)',
       'integer'=>'El campo :attribute debe ser un numero entero',
@@ -101,15 +102,11 @@ class ProductoController extends Controller
     ]);
 
     $producto = Producto::find($req['id']);
-    if($req->nombre)
-      $producto->nombre = $req->nombre;
-    if($req->precio)
-      $producto->precio = $req->precio;
-    if($req->descripcion)
-      $producto->descripcion = $req->descripcion;
+    $producto->nombre = $req->nombre;
+    $producto->precio = $req['precio'];
+    $producto->descripcion = $req['descripcion'];
     $producto->categoria_id = $req['categoria_id'];
-    if($req->imagen)
-      $producto->imagen = basename($req->file('imagen')->store('public'));
+    $producto->imagen = basename($req->file('imagen')->store('public'));
 
     $producto->save();
 
@@ -142,6 +139,11 @@ class ProductoController extends Controller
     ->get();
     return view('carrito',compact('producto'));
 
+   }
+
+   public function gestor()
+   {
+     return view('gestor');
    }
 
 }
