@@ -50,7 +50,7 @@
       <form action="/perfil" method="POST" enctype="multipart/form-data">
         @csrf
         <div id="form-imgContainer">
-          <label for="avatar"><img src="/storage/default.png" id="form-img" alt=""></label>
+          <label for="avatar"><img src="/storage/default.jpg" id="form-img" alt=""></label>
           <input type="file" name="avatar" id="avatar" style="display:none;">
         </div>
         <ul class="list-group list-group-flush">
