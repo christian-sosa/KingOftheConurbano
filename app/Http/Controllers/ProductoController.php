@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-   public function listado()
+   public function listado(Request $request)
    {
    $productos = Producto::paginate(9);
-   return view("home",compact("productos"));
+   return view("home",compact('productos'));
    //MUESTRA EL HOME CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
    }
    public function listado2()
@@ -133,17 +133,7 @@ class ProductoController extends Controller
    public function contacto()
    {
      return view('contacto');
-   }
-   public function mostrarCarrito($id)
-   {
-     $producto = Carrito::join('productos', 'productos.id', '=', 'carrito.producto_id')
-     ->join('users', 'users.id', '=', 'carrito.usuario_id')
-    ->select('carrito.productos_id')
-    ->get();
-    return view('carrito',compact('producto'));
-
-   }
-
+   }   
    public function gestor()
    {
      return view('gestor');

@@ -12,11 +12,7 @@ class User extends Authenticatable
 
     public $guarded = [];
 
-    public function carrito()
-    {
-      return $this->belongsTo(Carrito::class,'usuario_id');
-    }
-
+    
     /**
      * The attributes that are mass assignable.
      *

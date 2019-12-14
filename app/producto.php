@@ -13,9 +13,6 @@ class Producto extends Model
   {
     return $this->belongsTo(Categoria::class, 'categoria_id');
   }
-  public function carrito()
-  {
-    return $this->belongsTo(Carrito::class, 'producto_id');
-  }
+  
 
 }

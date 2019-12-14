@@ -10,7 +10,7 @@
       <h4>En mi carro actualmente: </h4>
 
     @if($productos)
-        @foreach($producto as $producto)
+        @foreach($productos as $producto)
           <article class="producto">
             <div class="imagen-producto">
               <img src="img/<{{$producto['imagen']}}" alt="pantalon">
