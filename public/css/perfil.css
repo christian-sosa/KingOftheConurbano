@@ -11,12 +11,19 @@ main {
 }
 
 .card img {
-  width: 100%;
+  min-width: 100px;
+  max-width: 100px;
+  min-height: 100px;
+  max-height: 100px
 }
 
 .modify {
   width: 40%;
   display: none;
+}
+
+input#avatar {
+   display: none;
 }
 
 .modify div li.list-group-item {

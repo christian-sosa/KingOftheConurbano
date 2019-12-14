@@ -2,8 +2,13 @@ const formCard = document.getElementById('form-card');
 const form = formCard.querySelector('form');
 const profileCard = document.getElementById('profile-card');
 const slideButton = document.querySelector('button#slide');
+const sendFormButton = document.querySelector('button#send-button');
 const formImg = document.getElementById('form-img');
 const formImgInput = document.getElementById('avatar');
+
+if(formCard.style.display == 'block') {
+  setFormDimensions();
+}
 
 var errors = {};
 
@@ -11,9 +16,28 @@ slideButton.onclick = showForm;
 formImgInput.onchange = function() {
   readURL(this);
 }
+sendFormButton.onclick = function () {
+  this.setAttribute('type', 'button');
+  var modificacionesHechas = false;
+  var indice = 0;
+
+  while(!modificacionesHechas && indice < form.elements.length) {
+    if(form.elements[indice].name != "_token" && form.elements[indice].name != "button") {
+      if(form.elements[indice].value != "") {
+        modificacionesHechas = true;
+      }
+    }
+    indice ++;
+  }
+
+  if(modificacionesHechas) {
+    this.setAttribute('type', 'submit');
+  }
+}
 form.onsubmit = function(event) {
   for(var element of form.elements) {
     if(element.name != "button" && element.name != "_token"){
+      // PARA EL NOMBRE
       if(element.name == "name") {
         if(element.value != "" && !validateName(element.value)) {
           errors.name = "El nombre debe ser texto";
@@ -21,21 +45,27 @@ form.onsubmit = function(event) {
         } else {
           errors.name = "";
         }
-      } else if(element.name == "email") {
+      }
+      // PARA EL EMAIL
+      else if(element.name == "email") {
         if(element.value != "" && !validateEmail(element.value)) {
           errors.email = "El email ingresado no es válido";
           event.preventDefault();
         } else {
           errors.email = "";
         }
-      } else if(element.name == 'fecha_nac') {
+      }
+      // PARA LA FECHA DE NACIMIENTO
+      else if(element.name == 'fecha_nac') {
         if(element.value != "" && !validateDate(element.value)) {
           errors.date = "La fecha de nacimiento que ingresaste no es válida";
           event.preventDefault();
         } else {
           errors.date = "";
         }
-      } else if(element.name == "telefono") {
+      }
+      // PARA EL TELEFONO
+      else if(element.name == "telefono") {
         if(element.value != "" &&  !validatePhone(element.value)) {
           errors.phone = "El numero de teléfono que ingresaste no es válido";
           event.preventDefault();
@@ -45,6 +75,7 @@ form.onsubmit = function(event) {
       }
     }
   }
+  // SI HAY ERRORES LOS IMPRIMO
   showErrors();
 }
 
@@ -62,7 +93,6 @@ function validateDate(date) {
   var year = '';
   var month = '';
   var day = '';
-  var actualDate = new Date();
 
   for(var i = 0; i < 10; i++) {
     if(i < 4)
@@ -73,14 +103,26 @@ function validateDate(date) {
       day += date[i].toString();
   }
 
-  if(actualDate.getFullYear() - 18 < parseInt(year) || parseInt(year) > actualDate.getFullYear())
-    return false
-  if(actualDate.getMonth() < parseInt(month) && actualDate.getFullYear() < parseInt(year))
-    return false
-  if(actualDate.getDay() < parseInt(day) && actualDate.getMonth() < parseInt(month) && actualDate.getFullYear() < parseInt(year))
-    return false
+  var userBirthDay = {
+    year : parseInt(year),
+    month : parseInt(month),
+    day : parseInt(day)
+  }
 
-  return true;
+  return (plus18(userBirthDay) && validDate(userBirthDay));
+}
+
+function plus18(userBirthDay) {
+  var actualDate = new Date();
+
+  return  ( ( ( userBirthDay.year + 18 ) <= actualDate.getFullYear() ) );
+}
+
+function validDate(userBirthDay) {
+  var actualDate = new Date();
+
+  return  ( ( userBirthDay.year > ( actualDate.getFullYear() - 100 ) ) &&
+            ( actualDate.getFullYear() < userBirthDay.year ) );
 }
 
 function validatePhone(phone) {
@@ -129,7 +171,10 @@ function showError(error, id) {
   if(error == '') {
     var field = getField(id);
 
-    var errorSpan = field.querySelector('span.error');
+    var input = field.querySelector('input');
+      input.classList.remove('is-invalid');
+
+    var errorSpan = field.querySelector('span.invalid-feedback');
 
     if(errorSpan != null) {
       errorSpan.parentNode.removeChild(errorSpan);
@@ -137,13 +182,16 @@ function showError(error, id) {
   } else {
     var field = getField(id);
 
+    var input = field.querySelector('input');
+    input.classList.add('is-invalid');
+
     var errorSpan = document.createElement('span');
-    errorSpan.setAttribute('class', 'error')
-    errorSpan.style.color = 'red';
+    errorSpan.setAttribute('class', 'invalid-feedback')
+    errorSpan.setAttribute('role', 'alert')
     errorSpan.innerHTML = '<strong>' + error + '</strong>';
 
-    if(field.querySelector('li').querySelector('span.error') == null)
-      field.querySelector('li').append(errorSpan);
+    if(field.querySelector('div').querySelector('span.invalid-feedback') == null)
+      field.querySelector('div').append(errorSpan);
 
     setFormDimensions();
   }
