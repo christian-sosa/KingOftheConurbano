@@ -12,9 +12,9 @@ class User extends Authenticatable
 
     public $guarded = [];
 
-    public function carrito()
+    public function productos()
     {
-      return $this->belongsTo(Carrito::class,'usuario_id');
+      return $this->belongsToMany(Producto::class, 'producto_usuario', 'usuario_id', 'producto_id');
     }
 
     /**

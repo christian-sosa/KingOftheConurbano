@@ -20,7 +20,7 @@
           <div class="descripcion"><p>{{$producto->descripcion}}</p></div>
           <div class="botones">
             <button class="boton ver-mas"><a href="/home/{{$producto->id}}">Ver en detalle</a></button>
-            <button class="boton aniadir-al-carro"><a href="CARRITO"><i class="fas fa-cart-plus"></i> Añadir al carro</a></button>
+            <button class="boton aniadir-al-carro"><a href="/carrito/{{$producto->id}}"><i class="fas fa-cart-plus"></i> Añadir al carro</a></button>
           </div>
         </article>
       @endforeach

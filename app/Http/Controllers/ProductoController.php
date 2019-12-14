@@ -134,15 +134,6 @@ class ProductoController extends Controller
    {
      return view('contacto');
    }
-   public function mostrarCarrito($id)
-   {
-     $producto = Carrito::join('productos', 'productos.id', '=', 'carrito.producto_id')
-     ->join('users', 'users.id', '=', 'carrito.usuario_id')
-    ->select('carrito.productos_id')
-    ->get();
-    return view('carrito',compact('producto'));
-
-   }
 
    public function gestor()
    {
