@@ -37,7 +37,7 @@
           <div class="link-nav">
             <li><a href="/perfil">Perfil</a></li>
           </div>
-          @if (Auth::user()->es_admin ==1)
+          @if (Auth::user()->es_admin)
             <div class="link-nav">
               <li><a href="/gestor">Gestor</a></li>
             </div>
