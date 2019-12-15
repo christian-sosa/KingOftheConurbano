@@ -37,10 +37,11 @@
           <div class="link-nav">
             <li><a href="/perfil">Perfil</a></li>
           </div>
+          
+            <div class="link-nav">
+              <li><a href="/gestor">Gestor</a></li>
+            </div>
 
-          <div class="link-nav">
-            <li><a href="/gestor">Gestor</a></li>
-          </div>
           <div class="link-nav">
             <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
