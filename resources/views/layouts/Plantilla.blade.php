@@ -37,10 +37,11 @@
           <div class="link-nav">
             <li><a href="/perfil">Perfil</a></li>
           </div>
-          
+          @if (Auth::user()->es_admin ==1)
             <div class="link-nav">
               <li><a href="/gestor">Gestor</a></li>
             </div>
+            @endif
 
           <div class="link-nav">
             <a href="{{ route('logout') }}"
