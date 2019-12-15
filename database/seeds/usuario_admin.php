@@ -16,6 +16,7 @@ class usuario_admin extends Seeder
         'email' => 'admin@admin.com',
         'password' => bcrypt('admin'),
         'fecha_nac' => '1999-12-31',
+        'es_admin' => 1,
       ]);
     }
 }

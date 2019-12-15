@@ -34,15 +34,15 @@ class CategoriaController extends Controller
   public function listaCategorias()
   {
     $categorias = Categoria::paginate(9);
-    return view('/gestorcategoria',compact('categorias'));
+    return view('/gestorcategoria', compact('categorias'));
   }
 
-  public function eliminarCategoria($id)
+  public function eliminarCategoria(Request $request)
   {
-    $categoria=Categoria::where('id','=',$id);
+    $categoria = Categoria::where('id','=',$request->categoria_id);
+
     $categoria->delete();
 
-    return redirect('gestorcategoria');
-
+    return redirect('/gestorcategoria');
   }
 }

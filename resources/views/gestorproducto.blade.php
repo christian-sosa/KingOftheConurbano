@@ -16,6 +16,9 @@
         <div class="nombre"><h4>{{$producto->nombre}}</h4></div>
         <div class="precio"><h4>{{$producto->precio}}</h4></div>
       </div>
+      <div class="categoria">
+        <h4>{{$producto->categoria->nombre}}</h4>
+      </div>
       <div class="descripcion"><p>{{$producto->descripcion}}</p></div>
       <div class="botones">
         <button type="button modificar-producto" class="boton col-4" name="button"><a href="/modificar/{{$producto->id}}"><i class="fas fa-tools"></i>Modificar publicacion</a></button>

@@ -38,5 +38,5 @@ Route::get('/gestor', 'ProductoController@gestor')->middleware('admin');
 Route::get('/agregarcategoria', 'CategoriaController@agregarCategoria')->middleware('admin');
 Route::post('/agregarcategoria', 'CategoriaController@guardarCategoria')->middleware('admin');
 Route::get('/gestorcategoria', 'CategoriaController@listaCategorias')->middleware('admin');
+Route::post('/gestorcategoria', 'CategoriaController@eliminarCategoria')->middleware('admin');
 Route::get('/usuario/noesadmin/{id}', 'UsuarioController@quitarAdmin')->middleware('admin');
-Route::get('/eliminarcategoria/{id}', 'CategoriaController@eliminarCategoria')->middleware('admin');
