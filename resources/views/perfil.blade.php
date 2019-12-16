@@ -68,7 +68,6 @@
         </div>
       </ul>
     </div>
-    <!-- style="@if($errors->isEmpty()) {{'display:none;'}} @else {{'display:block;'}} @endif" -->
     <div class="card modify" id="form-card" style="@if($errors->isEmpty()) {{'display:none;'}} @else {{'display:block;'}} @endif">
       <li class="list-group-item campo-valor">
         <h2 class="card-text"><b>Cambios</b></h2>
@@ -93,7 +92,7 @@
                 <label for="name">Nuevo nombre</label>
               </div>
               <div class="valor">
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nuevo nombre" name="name" id="name" value="{{ old('name') }}">
                 @error('name')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -108,7 +107,7 @@
                 <label for="email">Nuevo email</label>
               </div>
               <div class="valor">
-                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}">
+                <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Nueva direccion email" name="email" id="email" value="{{ old('email') }}">
                   @error('email')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -138,7 +137,7 @@
                 <label for="telefono">Nuevo telefono</label>
               </div>
               <div class="valor">
-                <input type="tel" class="form-control @error('telefono') is-invalid @enderror" name="telefono" id="telefono" value="{{ old('telefono') }}">
+                <input type="tel" class="form-control @error('telefono') is-invalid @enderror" placeholder="Nuevo numero de telefono" name="telefono" id="telefono" value="{{ old('telefono') }}">
                   @error('telefono')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>

@@ -54,8 +54,14 @@ div.botones {
   justify-content: space-around;
 }
 
+@media (min-width: 482px) {
+  article.producto {
+    width: 48%;
+  }
+}
+
 @media (min-width: 982px) {
   article.producto {
-    width: 30%;
+    width: 33%;
   }
 }

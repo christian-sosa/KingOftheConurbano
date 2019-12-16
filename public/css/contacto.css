@@ -1,0 +1,29 @@
+div.titulo {
+  text-align: center;
+  color: #fff;
+}
+
+form {
+  background-color: #000;
+  padding: 0.2rem;
+  color: #fff;
+}
+
+form div.titulo {
+  margin-bottom: 2rem;
+}
+
+div.mapa {
+  margin: 2rem 0;
+  border: 0.1rem solid #000;
+  text-align: center;
+}
+
+div.mapa div.titulo {
+  background-color: #000;
+  padding: 1rem;
+}
+
+iframe {
+  width: 100%;
+}

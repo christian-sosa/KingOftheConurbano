@@ -33,13 +33,13 @@
             <p>{{$producto->descripcion}}</p>
           </div>
           <div class="botones">
-            <form action="/modificar/{{$producto->id}}" method="get">
-              <button type="submit" class="boton col-12" name="button"><i class="fas fa-tools"></i>Modificar producto</button>
+            <form class="col-6" action="/modificar/{{$producto->id}}" method="get">
+              <button type="submit" class="col-12 boton" name="button"><i class="fas fa-tools"></i>Modificar producto</button>
             </form>
-            <form action="/eliminar" method="post">
+            <form class="col-6" action="/eliminar" method="post">
               @csrf
               <input type="hidden" name="producto_id" value="{{$producto->id}}">
-              <button type="submit" class="boton col-12" name="button"><i class="fas fa-times"></i>Quitar del catalogo</button>
+              <button type="submit" class="col-12 boton" name="button"><i class="fas fa-times"></i>Quitar del catalogo</button>
             </form>
           </div>
         </article>

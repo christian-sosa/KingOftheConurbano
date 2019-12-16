@@ -4,24 +4,24 @@ main {
   justify-content: center;
 }
 
-.card {
-  width: 40%;
+div.card#profile-card, div.card#form-card {
+  width: 100%;
+  margin: 1%;
   padding: 2%;
   text-align: center;
   background-color: #000;
 }
 
-.card img {/*
-  min-width: 100px;
-  max-width: 100px;
-  min-height: 100px;
-  max-height: 100px*/
+.card img {
   width: 100%;
 }
 
 .modify {
   width: 40%;
+}
 
+label {
+  font-size: 1.5rem;
 }
 
 input#avatar {
@@ -51,4 +51,9 @@ input#avatar {
 
 input {
   text-align: center;
+}
+
+@media (min-width: 982px) {
+  div.card#profile-card, div.card#form-card {
+    width: 48%;
 }

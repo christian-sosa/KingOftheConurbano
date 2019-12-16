@@ -5,7 +5,6 @@ div.producto{
   background-color: #000;
   color: #fff;
   padding: 0.6rem;
-  width: 50%;
 }
 
 input, select, option, textarea {
@@ -46,14 +45,12 @@ div.form-group {
   text-align: center;
 }
 
-div.campo.descripcion, div.valor.descripcion {
+img {
   width: 100%;
 }
 
-div.campo.imagen, div.valor.imagen {
-  width: 100%;
-}
-
-div.valor.imagen img {
-  width: 100%;
+@media (min-width: 982px) {
+  .producto {
+    width: 80%;
+  }
 }

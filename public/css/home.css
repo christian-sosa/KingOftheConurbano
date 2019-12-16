@@ -56,6 +56,12 @@ div.botones form button {
   width:90%;
 }
 
+@media (min-width: 482px) {
+  article.producto {
+    width: 48%;
+  }
+}
+
 @media (min-width: 982px) {
   article.producto {
     width: 30%;
