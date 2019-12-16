@@ -8,27 +8,47 @@ main {
   width: 40%;
   padding: 2%;
   text-align: center;
+  background-color: #000;
 }
 
-.card img {
+.card img {/*
   min-width: 100px;
   max-width: 100px;
   min-height: 100px;
-  max-height: 100px
+  max-height: 100px*/
+  width: 100%;
 }
 
 .modify {
   width: 40%;
-  display: none;
+
 }
 
 input#avatar {
    display: none;
 }
 
-.modify div li.list-group-item {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+.card .list-group:last-child .list-group-item:last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.campo-valor {
+  background-image: url('/storage/bkground.png');
+  padding: 0.1rem;
+  margin: 1rem;
+}
+
+.campo {
+  background-color: #000;
+  color: #fff;
+  padding: 0.1rem;
+}
+
+.valor {
+  padding: 0.1rem;
+}
+
+input {
+  text-align: center;
 }

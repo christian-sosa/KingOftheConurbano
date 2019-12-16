@@ -122,7 +122,7 @@ function validDate(userBirthDay) {
   var actualDate = new Date();
 
   return  ( ( userBirthDay.year > ( actualDate.getFullYear() - 100 ) ) &&
-            ( actualDate.getFullYear() < userBirthDay.year ) );
+            ( userBirthDay.year <= actualDate.getFullYear() ) );
 }
 
 function validatePhone(phone) {
@@ -172,7 +172,7 @@ function showError(error, id) {
     var field = getField(id);
 
     var input = field.querySelector('input');
-      input.classList.remove('is-invalid');
+    input.classList.remove('is-invalid');
 
     var errorSpan = field.querySelector('span.invalid-feedback');
 
@@ -190,8 +190,8 @@ function showError(error, id) {
     errorSpan.setAttribute('role', 'alert')
     errorSpan.innerHTML = '<strong>' + error + '</strong>';
 
-    if(field.querySelector('div').querySelector('span.invalid-feedback') == null)
-      field.querySelector('div').append(errorSpan);
+    if(field.querySelector('div.valor').querySelector('span.invalid-feedback') == null)
+      field.querySelector('div.valor').append(errorSpan);
 
     setFormDimensions();
   }
