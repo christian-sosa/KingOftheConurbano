@@ -37,6 +37,10 @@
           <div class="link-nav">
             <li><a href="/perfil">Perfil</a></li>
           </div>
+          <div class="link-nav">
+            <li><a href="/carrito">Carrito</a></li>
+          </div>
+
           @if (Auth::user()->es_admin)
             <div class="link-nav">
               <li><a href="/gestor">Gestor</a></li>

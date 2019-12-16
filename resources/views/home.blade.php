@@ -7,6 +7,7 @@
 @section('contenido')
 <div class="container">
   <main>
+    {{$productos->links()}}
     <section class="productos">
       @foreach ($productos as $producto)
         <article class="producto">
