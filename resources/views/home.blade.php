@@ -7,6 +7,22 @@
 @section('contenido')
 <div class="container">
   <main>
+    <form class="" action="" method="get">
+      <label for="nombre">Titulo</label>
+      <input type="text" class="form-control" name="nombre" value="@if(isset($_GET['nombre'])){{$_GET['nombre']}}@endif">
+      <label for="title">Categoria</label>
+      <select class="form-control" name="categoria_id">
+        <option value="">---N/A---</option>
+        @foreach ($categorias as $categoria)
+          <option value="{{ $categoria['id']}}"
+            @if(isset($_GET['categoria_id']) && $_GET['categoria_id'] == $categoria['id']) selected @endif>
+            {{$categoria['nombre']}}
+          </option>
+        @endforeach
+      </select>
+      <button class="boton" type="submit">Filtrar</button>
+      <a href="/home">Limpiar busqueda</a>
+    </form>
     <section class="productos">
       @foreach ($productos as $producto)
         <article class="producto">
@@ -19,7 +35,7 @@
           </div>
           <div class="descripcion"><p>{{$producto->descripcion}}</p></div>
           <div class="botones">
-            <form action="/home/{{$producto->id}}" method="get">
+            <form action="/home/producto/{{$producto->id}}" method="get">
               <button type="submit" class="boton">Ver en detalle</button>
             </form>
             <form action="/carrito/agregarproducto" method="post">

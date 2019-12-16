@@ -9,11 +9,22 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-   public function listado()
+   public function listado(Request $request)
    {
-   $productos = Producto::paginate(9);
-   return view("home",compact("productos"));
-   //MUESTRA EL HOME CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
+     $categorias = Categoria::all();
+
+     if($request->nombre && $request->categoria_id) {
+       $productos = Producto::where('nombre','like','%' . $request->nombre . '%')->where('categoria_id','=',$request->categoria_id)->paginate(9);
+    } else if($request->categoria_id) {
+       $productos = Categoria::find($_GET['categoria_id'])->productos()->paginate(9);
+     } else if($request->nombre) {
+       $productos = Producto::where('nombre','like','%' . $request->nombre . '%')->paginate(9);
+     } else {
+       $productos = Producto::paginate(9);
+     }
+
+     return view('home',compact('productos', 'categorias'));
+     //MUESTRA EL HOME CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
    }
    public function listado2()
    {
@@ -72,15 +83,7 @@ class ProductoController extends Controller
 
      return redirect('/gestorproductos');
    }
-
-   public function filtrarCategoria($categoria_id)
-   {
-     $productos = Producto::where('categoria_id','=',$categoria_id)->paginate(6);
-     return view('home', compact('productos'));
-     // RECIBE LA CATEGORIA , BUSCA TODOS LOS PRODUCTOS DE ESA CATEGORIA
-     //Y LOS MANDA AL HOME
-   }
-
+   
    public function modificarProducto(Request $req)
    {
      $this->validate($req,
