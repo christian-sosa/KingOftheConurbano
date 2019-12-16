@@ -23,6 +23,7 @@
       <button class="boton" type="submit">Filtrar</button>
       <a href="/home">Limpiar busqueda</a>
     </form>
+    {{$productos->links()}}
     <section class="productos">
       @foreach ($productos as $producto)
         <article class="producto">
@@ -47,7 +48,7 @@
         </article>
       @endforeach
     </section>
+    {{$productos->links()}}
   </main>
-  {{$productos->links()}}
 </div>
 @endsection

@@ -24,7 +24,6 @@ class ProductoController extends Controller
      }
 
      return view('home',compact('productos', 'categorias'));
-     //MUESTRA EL HOME CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
    }
    public function listado2()
    {
@@ -83,7 +82,7 @@ class ProductoController extends Controller
 
      return redirect('/gestorproductos');
    }
-   
+
    public function modificarProducto(Request $req)
    {
      $this->validate($req,
