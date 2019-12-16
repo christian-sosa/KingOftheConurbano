@@ -13,14 +13,20 @@
           <div class="imagen-producto">
             <img src="/storage/{{$producto->imagen}}">
           </div>
-          <div class="nombre-mas-precio">
+          <div class="nombre-precio">
             <div class="nombre"><h4>{{$producto->nombre}}</h4></div>
-            <div class="precio"><h4>{{$producto->precio}}</h4></div>
+            <div class="precio"><h4>${{$producto->precio}}</h4></div>
           </div>
           <div class="descripcion"><p>{{$producto->descripcion}}</p></div>
           <div class="botones">
-            <button class="boton ver-mas"><a href="/home/{{$producto->id}}">Ver en detalle</a></button>
-            <button class="boton aniadir-al-carro"><a href="/carrito/{{$producto->id}}"><i class="fas fa-cart-plus"></i> Añadir al carro</a></button>
+            <form action="/home/{{$producto->id}}" method="get">
+              <button type="submit" class="boton">Ver en detalle</button>
+            </form>
+            <form action="/carrito/agregarproducto" method="post">
+              @csrf
+              <input type="hidden" name="producto_id" value="{{$producto->id}}">
+              <button type="submit" class="boton"><i class="fas fa-cart-plus"></i> Añadir al carro</button>
+            </form>
           </div>
         </article>
       @endforeach

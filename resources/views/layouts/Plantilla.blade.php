@@ -41,7 +41,7 @@
             <div class="link-nav">
               <li><a href="/gestor">Gestor</a></li>
             </div>
-            @endif
+          @endif
 
           <div class="link-nav">
             <a href="{{ route('logout') }}"

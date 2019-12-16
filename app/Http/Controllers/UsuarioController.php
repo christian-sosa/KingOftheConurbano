@@ -52,7 +52,7 @@ class UsuarioController extends Controller
     public function listaUsuarios()
     {
       $usuarios = User::paginate(9);
-      return view("usuarios",compact("usuarios"));
+      return view('gestorusuarios',compact("usuarios"));
     }
 
     public function mostrarUsuario($id)
@@ -60,21 +60,21 @@ class UsuarioController extends Controller
       $usuario = User::find($id);
       return view('detalleusuario',compact("usuario"));
     }
-    public function darAdmin($id)
+    public function darAdmin(Request $request)
     {
-      $usuario = User::find($id);
+      $usuario = User::find($request->usuario_id);
       $usuario->es_admin = 1;
       $usuario->save();
       $usuarios = User::paginate(9);
-      return view("usuarios",compact("usuarios"));
+      return view('gestorusuarios',compact("usuarios"));
     }
 
-    public function quitarAdmin($id)
+    public function quitarAdmin(Request $request)
     {
-      $usuario = User::find($id);
+      $usuario = User::find($request->usuario_id);
       $usuario->es_admin = 0;
       $usuario->save();
       $usuarios = User::paginate(9);
-      return view("usuarios",compact("usuarios"));
+      return view('gestorusuarios',compact("usuarios"));
     }
 }

@@ -18,25 +18,31 @@ Route::get('/faq', 'ProductoController@faq');
 Route::get('/contacto' , 'ProductoController@contacto');
 Route::get('/home', 'ProductoController@listado');
 Route::get('/home/{id}','ProductoController@detalle');
-Route::get('/eliminar/{nombre}','ProductoController@eliminarProducto')->middleware('admin');
+Route::post('/eliminar','ProductoController@eliminarProducto')->middleware('admin');
 Route::get('/agregar', 'ProductoController@agregarProducto')->middleware('admin');
 Route::post('/agregar', 'ProductoController@guardarProducto')->middleware('admin');
 Route::get('/home/filtrado/{categoria}','ProductoController@filtrarCategoria');
-Route::get('/gestorproducto', 'ProductoController@listado2')->middleware('admin');
 Route::get('/modificar/{id}','ProductoController@productoYcategoria')->middleware('admin');
 Route::post('/modificar', 'ProductoController@modificarProducto')->middleware('admin');
-Route::get('/carrito/{id}','CarritoController@agregarProductoACarrito');
-Route::post('/carrito', 'CarritoController@eliminarProducto');
+Route::post('/carrito/agregarproducto','CarritoController@agregarProductoACarrito');
+Route::post('/carrito/quitarproducto', 'CarritoController@quitarProductoDelCarrito');
 Route::post('/carrito/vaciar', 'CarritoController@vaciarCarrito');
 Route::get('/carrito', 'CarritoController@mostrarCarrito');
 Route::get('/perfil', 'UsuarioController@perfil');
 Route::post('/perfil', 'UsuarioController@actualizarInfoUsuario');
-Route::get('/usuarios', 'UsuarioController@listaUsuarios')->middleware('admin');
+
 Route::get('/usuario/{id}', 'UsuarioController@mostrarUsuario')->middleware('admin');
-Route::get('/usuario/esadmin/{id}', 'UsuarioController@darAdmin')->middleware('admin');
+
+// Gestor y sus funcionalidades
 Route::get('/gestor', 'ProductoController@gestor')->middleware('admin');
+Route::get('/gestorusuarios', 'UsuarioController@listaUsuarios')->middleware('admin');
+Route::get('/gestorproductos', 'ProductoController@listado2')->middleware('admin');
+Route::get('/gestorcategorias', 'CategoriaController@listaCategorias')->middleware('admin');
+
+
 Route::get('/agregarcategoria', 'CategoriaController@agregarCategoria')->middleware('admin');
 Route::post('/agregarcategoria', 'CategoriaController@guardarCategoria')->middleware('admin');
-Route::get('/gestorcategoria', 'CategoriaController@listaCategorias')->middleware('admin');
-Route::post('/gestorcategoria', 'CategoriaController@eliminarCategoria')->middleware('admin');
-Route::get('/usuario/noesadmin/{id}', 'UsuarioController@quitarAdmin')->middleware('admin');
+Route::post('/gestorcategorias', 'CategoriaController@eliminarCategoria')->middleware('admin');
+
+Route::post('/usuario/quitaradmin', 'UsuarioController@quitarAdmin')->middleware('admin');
+Route::post('/usuario/daradmin', 'UsuarioController@darAdmin')->middleware('admin');

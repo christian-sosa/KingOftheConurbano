@@ -11,7 +11,6 @@
   margin: 0 auto;
 }
 
-
 a {
   text-decoration: none;
 }
@@ -24,12 +23,12 @@ ul, ol {
   list-style-type: none;
 }
 
-.container-fluid {
-  margin: 0 auto;
-}
-
 body {
   background-image: url('/storage/bkground.png');
+}
+
+input, select, textarea {
+    background-image: url('/storage/bkground.png');
 }
 
 .boton {

@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class CarritoController extends Controller
 {
-    public function agregarProductoACarrito($producto_id)
+    public function agregarProductoACarrito(Request $request)
     {
       $user = request()->user();
 
-      $user->productos()->attach($producto_id);
+      $user->productos()->attach($request->producto_id);
 
       return redirect('/carrito');
     }
@@ -25,12 +25,10 @@ class CarritoController extends Controller
       return view('carrito', compact('productos'));
     }
 
-    public function eliminarProducto(Request $request) {
+    public function quitarProductoDelCarrito(Request $request) {
       $user = request()->user();
 
-      $producto_id = $request->producto_id;
-
-      $user->productos()->detach($producto_id);
+      $user->productos()->detach($request->producto_id);
 
       return redirect('/carrito');
     }

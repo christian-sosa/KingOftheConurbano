@@ -4,9 +4,11 @@
 @section('contenido')
 
   <main>
-    <button type="button" class="boton"><a href="/gestorcategoria"><i class="fas fa-arrow-left"></i>Volver</a></button>
+    <form action="/gestorcategorias" method="get">
+      <button type="submit" class="boton"><i class="fas fa-arrow-left"></i>Volver</button>
+    </form>
     <form class="" action="/agregarcategoria" method="post" enctype="multipart/form-data">
-      {{csrf_field()}}
+      @csrf
       <div class="titulo row">
         <h2>Agregar categoria</h2>
       </div>

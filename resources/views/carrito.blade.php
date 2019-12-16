@@ -5,11 +5,14 @@
 @section('contenido')
 <main>
 
-      <button type="button" class="boton"><a href="/home"><i class="fas fa-arrow-left"></i>Volver</a></button>
+  <form class="" action="/home" method="get">
+    <button type="submit" class="boton">Volver</button>
+  </form>
 
-      <h4>En mi carro actualmente: </h4>
 
-    @if($productos)
+
+    @if(sizeof($productos))
+        <h4>En mi carro actualmente: </h4>
         @foreach($productos as $producto)
           <article class="producto">
             <div class="imagen-producto">
@@ -21,7 +24,7 @@
             </div>
             <div class="descripcion"><p>{{$producto->descripcion}}</p></div>
             <div class="botones">
-              <form class="" action="/carrito" method="post">
+              <form class="" action="/carrito/quitarproducto" method="post">
                 @csrf
                 <input type="hidden" name="producto_id" value="{{$producto->id}}">
                 <button type="submit" class="boton"><i class="fas fa-times"></i>Quitar del carrito</button>
@@ -30,7 +33,7 @@
           </article>
           @endforeach
        @else
-        echo 'No posee productos en su carro actualmente';
+         <h4>No posee productos en su carro actualmente.</h4>
       @endif
 
       <div class="precio-total row">
@@ -42,7 +45,7 @@
         </div>
       </div>
 
-      @if($productos)
+      @if(sizeof($productos))
         <div class="vaciar-carro">
           <form class="" action="/carrito/vaciar" method="post">
             @csrf

@@ -28,13 +28,13 @@ class CategoriaController extends Controller
     $categoria->nombre = $req['nombre'];
     $categoria->save();
 
-    return redirect('/gestorcategoria');
+    return redirect('/gestorcategorias');
   }
 
   public function listaCategorias()
   {
     $categorias = Categoria::paginate(9);
-    return view('/gestorcategoria', compact('categorias'));
+    return view('/gestorcategorias', compact('categorias'));
   }
 
   public function eliminarCategoria(Request $request)
@@ -43,6 +43,6 @@ class CategoriaController extends Controller
 
     $categoria->delete();
 
-    return redirect('/gestorcategoria');
+    return redirect('/gestorcategorias');
   }
 }

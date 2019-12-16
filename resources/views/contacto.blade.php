@@ -4,7 +4,7 @@
 <main>
 
         <form class="" action="contacto.php"  method="post">
-          {{csrf_field()}}
+          @csrf
           <div class="titulo row">
             <h2>Envianos tu consulta</h2>
           </div>

@@ -2,9 +2,12 @@
 
 @section('contenido')
 <main>
-  <button type="button" class="boton"><a href="/gestorproducto"><i class="fas fa-arrow-left"></i>Volver</a></button>
-  <form class="" action="/agregar" method="post" enctype="multipart/form-data">
-    {{csrf_field()}}
+  <form action="/gestorproductos" method="get">
+    <button type="submit" class="boton"><i class="fas fa-arrow-left"></i>Volver</button>
+  </form>
+
+  <form action="/agregar" method="post" enctype="multipart/form-data">
+    @csrf
     <div class="titulo row">
       <h2>Agregar producto</h2>
     </div>

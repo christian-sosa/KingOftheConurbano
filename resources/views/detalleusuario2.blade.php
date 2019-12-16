@@ -2,6 +2,9 @@
 
 @section('contenido')
 <main>
+  <form class="" action="/home" method="get">
+    <button type="submit" class="boton">Volver</button>
+  </form>
   <div class="usuario">
     <div class="imagen-usuario">
       <img src="/storage/usuarios/{{$usuario->avatar}}" alt="avatar">

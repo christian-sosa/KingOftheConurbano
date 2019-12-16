@@ -18,7 +18,7 @@ class ProductoController extends Controller
    public function listado2()
    {
    $productos = Producto::paginate(9);
-   return view("gestorproducto",compact("productos"));
+   return view("gestorproductos",compact("productos"));
    //MUESTRA EL GESTOR CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
    //SUJETO A CAMBIOS
    }
@@ -26,7 +26,7 @@ class ProductoController extends Controller
    public function detalle($id)
    {
      $producto = Producto::find($id);
-     return view('detalle', compact('producto'));
+     return view('detalleproducto', compact('producto'));
      // BUSCA UN PRODUCTO POR ID Y LO DEVUELVE A UNA VISTAA
 
    }
@@ -64,13 +64,13 @@ class ProductoController extends Controller
      //VALIDA FORMULARIO, INSERTA EN BASE DE DATOS Y TE MANDA AL HOME
    }
 
-   public function eliminarProducto($id)
+   public function eliminarProducto(Request $request)
    {
-     $producto = Producto::where('id','=',$id);
+     $producto = Producto::where('id','=',$request->producto_id);
+
      $producto->delete();
 
-     return redirect('gestorproducto');
-     //RECIBE ID , LO BUSCA Y SE VA DELETEADO
+     return redirect('/gestorproductos');
    }
 
    public function filtrarCategoria($categoria_id)
@@ -100,7 +100,7 @@ class ProductoController extends Controller
       'file'=>'El campo :attribute debe ser un archivo'
     ]);
 
-    $producto = Producto::find($req['id']);
+    $producto = Producto::find($req->id);
     if($req->nombre)
       $producto->nombre = $req->nombre;
     if($req->precio)
@@ -113,7 +113,7 @@ class ProductoController extends Controller
 
     $producto->save();
 
-    return redirect('/home');
+    return redirect('/gestorproductos');
    }
    public function productoYcategoria($id)
    {

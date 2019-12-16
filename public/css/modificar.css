@@ -1,0 +1,59 @@
+
+
+div.producto{
+  margin: 0 auto;
+  background-color: #000;
+  color: #fff;
+  padding: 0.6rem;
+  width: 50%;
+}
+
+input, select, option, textarea {
+  color: #000;
+}
+
+.campo-valor {
+  display: flex;
+  flex-wrap: wrap;
+  background-image: url('/storage/bkground.png');
+  padding: 0.1rem;
+  margin: 1rem;
+}
+
+.campo, .valor {
+  width: 50%;
+  text-align: center;
+}
+
+.campo {
+  background-color: #000;
+  color: #fff;
+  margin-bottom: 0.1rem;
+}
+
+.valor {
+  background-image: url('/storage/bkground.png');
+  color: #000;
+}
+
+div.form-group {
+  background-color: #000;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.2rem;
+  margin: 0;
+  text-align: center;
+}
+
+div.campo.descripcion, div.valor.descripcion {
+  width: 100%;
+}
+
+div.campo.imagen, div.valor.imagen {
+  width: 100%;
+}
+
+div.valor.imagen img {
+  width: 100%;
+}
