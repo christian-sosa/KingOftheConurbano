@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-   public function listado(Request $request)
+   public function listadoHome(Request $request)
    {
      $categorias = Categoria::all();
 
@@ -25,12 +25,21 @@ class ProductoController extends Controller
 
      return view('home',compact('productos', 'categorias'));
    }
-   public function listado2()
+   public function listadoGestor(Request $request)
    {
-   $productos = Producto::paginate(9);
-   return view("gestorproductos",compact("productos"));
-   //MUESTRA EL GESTOR CON EL LISTADO DE TODOS LOS PRODUCTOS CARGADOS
-   //SUJETO A CAMBIOS
+     $categorias = Categoria::all();
+
+     if($request->nombre && $request->categoria_id) {
+       $productos = Producto::where('nombre','like','%' . $request->nombre . '%')->where('categoria_id','=',$request->categoria_id)->paginate(9);
+    } else if($request->categoria_id) {
+       $productos = Categoria::find($_GET['categoria_id'])->productos()->paginate(9);
+     } else if($request->nombre) {
+       $productos = Producto::where('nombre','like','%' . $request->nombre . '%')->paginate(9);
+     } else {
+       $productos = Producto::paginate(9);
+     }
+
+     return view('gestorproductos', compact('productos', 'categorias'));
    }
 
    public function detalle($id)
@@ -69,7 +78,7 @@ class ProductoController extends Controller
 
      $producto->save();
 
-     return redirect('/home');
+     return redirect('/gestorproductos');
      //AGREGAR UN PRODUCTO
      //VALIDA FORMULARIO, INSERTA EN BASE DE DATOS Y TE MANDA AL HOME
    }

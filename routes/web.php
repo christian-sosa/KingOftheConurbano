@@ -13,10 +13,10 @@
 
 
 Auth::routes();
-Route::get('/', 'ProductoController@listado');
+Route::get('/', 'ProductoController@listadoHome');
 Route::get('/faq', 'ProductoController@faq');
 Route::get('/contacto' , 'ProductoController@contacto');
-Route::get('/home', 'ProductoController@listado');
+Route::get('/home', 'ProductoController@listadoHome');
 Route::get('/home/producto/{id}','ProductoController@detalle');
 Route::post('/eliminar','ProductoController@eliminarProducto')->middleware('admin');
 Route::get('/agregar', 'ProductoController@agregarProducto')->middleware('admin');
@@ -35,7 +35,7 @@ Route::get('/usuario/{id}', 'UsuarioController@mostrarUsuario')->middleware('adm
 // Gestor y sus funcionalidades
 Route::get('/gestor', 'ProductoController@gestor')->middleware('admin');
 Route::get('/gestorusuarios', 'UsuarioController@listaUsuarios')->middleware('admin');
-Route::get('/gestorproductos', 'ProductoController@listado2')->middleware('admin');
+Route::get('/gestorproductos', 'ProductoController@listadoGestor')->middleware('admin');
 Route::get('/gestorcategorias', 'CategoriaController@listaCategorias')->middleware('admin');
 
 
