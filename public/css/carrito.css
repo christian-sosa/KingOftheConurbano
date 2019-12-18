@@ -1,4 +1,4 @@
-div.producto {
+article.producto {
   background-color: #000;
   padding: 0.6rem;
   color: #fff;
@@ -49,4 +49,23 @@ div.categoria {
 
 div.descripcion {
   text-align: center;
+}
+
+div.total {
+  align-items: center;
+}
+
+div.total div.texto {
+  background-color: #000;
+  color: #fff;
+  border: 0.1rem solid #000;
+}
+
+div.total div.final {
+  border: 0.1rem solid #000;
+  color: #000;
+}
+
+div.total div.vaciar-carro form button {
+  padding: 0.6rem;
 }

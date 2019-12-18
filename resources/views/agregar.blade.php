@@ -1,70 +1,66 @@
 @extends('layouts/Plantilla')
 
+@section('css')
+<link rel="stylesheet" href="/css/agregarproducto.css">
+@endsection
+
 @section('contenido')
 <div class="container">
   <main>
     <form action="/gestorproductos" method="get">
       <button type="submit" class="boton"><i class="fas fa-arrow-left"></i>Volver</button>
     </form>
-
-    <form action="/agregar" method="post" enctype="multipart/form-data">
+    <form method="POST" action="/agregar" enctype="multipart/form-data" class="row">
       @csrf
-      <div class="titulo row">
-        <h2>Agregar producto</h2>
+      <div class="titulo row col-12">
+        <h2 class="text-center col-12">Agregar producto</h2>
       </div>
-      <div class="form-group row">
-        <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
-        <div class="col-sm-6">
-
-          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="{{old('nombre')}}">
-          @error('nombre')
-            {{$message}}
-          @enderror
-        </div>
+      <div class="line"></div>
+      <div class="form-group row col-12">
+        <label for="imagen" class="col-12 col-md-6 col-form-label text-center">Imagen</label>
+        <input type="file" class="col-12 col-md-4 form-control text-center @error('imagen') is-invalid @enderror" id="imagen" name="imagen">
+        @error('imagen')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+        @enderror
       </div>
-      <div class="form-group row">
-        <label class="col-sm-4 col-form-label" for="precio">Precio</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" id="precio" name="precio" value="{{old('precio')}}">
-          @error('precio')
-            {{$message}}
-          @enderror
-        </div>
-
+      <div class="form-group row col-12">
+        <label for="nombre" class="col-12 col-md-6 col-form-label text-center">Nombre</label>
+        <input type="text" class="col-12 col-md-4 form-control text-center @error('nombre') is-invalid @enderror" id="nombre" name="nombre" placeholder="Nuevo nombre" value="{{old('nombre')}}">
+        @error('nombre')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+        @enderror
       </div>
-      <div class="form-group row">
-        <label class="col-sm-4 col-form-label" for="descripcion">Descripcion</label>
-        <div class="col-sm-6">
-          <textarea class="form-control" name="descripcion" id="descripcion" rows="2" cols="20">{{old('descripcion')}}</textarea>
-          @error('descripcion')
-            {{$message}}
-          @enderror
-        </div>
-
+      <div class="form-group row col-12">
+        <label for="precio" class="col-12 col-md-6 col-form-label text-center">Precio</label>
+        <input type="text" class="col-12 col-md-4 text-center form-control @error('precio') is-invalid @enderror" id="precio" name="precio" placeholder="Nuevo precio" value="{{old('precio')}}">
+        @error('precio')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+        @enderror
       </div>
-      <div class="form-group row">
-        <label class="col-sm-4 col-form-label" for="categoria">Categoria</label>
-        <div class="col-sm-6">
-          <select class="form-control" name="categoria_id" id="categoria">
-            @foreach($categorias as $categoria)
-              <option value="{{$categoria['id']}}">{{$categoria->nombre}}</option>
-            @endforeach
-            @error('categoria')
-              {{$message}}
-            @enderror
-          </select>
-        </div>
+      <div class="form-group row col-12">
+        <label for="categoria_id" class="col-12 col-md-6 col-form-label text-center">Categoria</label>
+        <select class="col-12 col-md-4 form-control text-center" id="categoria_id" name="categoria_id">
+          @foreach($categorias as $categoria) {
+            <option value="{{$categoria['id']}}">{{$categoria['nombre']}}</option>
+          @endforeach
+        </select>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-4 col-form-label" for="imagen">Imagen</label>
-        <div class="col-sm-6">
-          <input type="file" class="form-control" id="imagen" name="imagen" value="">
-          @error('imagen')
-            {{$message}}
-          @enderror
-        </div>
+      <div class="form-group row col-12">
+        <label for="descripcion" class="col-12 col-md-6 col-form-label text-center">Descripcion</label>
+        <textarea class="col-12 col-md-4 form-control text-center @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" placeholder="Nueva descripcion" value="{{old('descripcion')}}"></textarea>
+        @error('descripcion')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+        @enderror
       </div>
-      <div class="form-group row">
+      <div class="form-group row col-12">
         <div class="col-8"></div>
         <button class="boton col-2" type="submit" name="button"><i class="fas fa-plus"></i>Agregar</button>
       </div>

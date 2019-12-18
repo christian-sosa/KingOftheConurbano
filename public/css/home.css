@@ -56,6 +56,22 @@ div.botones form button {
   width:90%;
 }
 
+form.filtrar{
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  padding:0.5rem;
+  margin-bottom: 1rem;
+}
+
+form.filtrar div.filtrar-botones {
+  justify-content: space-around;
+}
+
+form.filtrar div {
+  margin: 0.6rem 0;
+}
+
 @media (min-width: 482px) {
   article.producto {
     width: 48%;
@@ -63,6 +79,10 @@ div.botones form button {
 }
 
 @media (min-width: 982px) {
+  form.filtrar div {
+    margin: 0;
+  }
+
   article.producto {
     width: 30%;
   }

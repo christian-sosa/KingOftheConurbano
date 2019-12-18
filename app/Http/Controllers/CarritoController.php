@@ -22,7 +22,13 @@ class CarritoController extends Controller
     {
       $productos = request()->user()->productos;
 
-      return view('carrito', compact('productos'));
+      $total = 0;
+
+      foreach($productos as $producto) {
+        $total += $producto->precio;
+      }
+
+      return view('carrito', compact('productos', 'total'));
     }
 
     public function quitarProductoDelCarrito(Request $request) {
