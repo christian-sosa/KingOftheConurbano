@@ -1,7 +1,6 @@
 var disabledForms = document.querySelectorAll('form.disabled');
 
 for(var form of disabledForms) {
-  console.log(form);
   form.onsubmit = function(event) {
     event.preventDefault();
 

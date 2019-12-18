@@ -20,7 +20,6 @@
             <h4 class="nombre">{{$categoria->nombre}}</h4>
             <h6 class="cantidad-productos"> ({{sizeof($categoria->productos)}} productos)</h6>
           </div>
-          <!-- sizeof($categoria->productos) es lo mismo que sizeof($categoria->productos) > 0 -->
           <form class="@if(sizeof($categoria->productos)) {{'disabled'}} @endif" action="/gestorcategorias" method="POST">
             @csrf
             <input type="hidden" name="categoria_id" value="{{$categoria->id}}">

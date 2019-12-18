@@ -32,7 +32,7 @@
       <div class="filtrar-botones text-center col-4 row">
         <div class="col-md-2"></div>
         <button class="boton col-md-4" type="submit">Aplicar filtro</button>
-        <a class="col-md-4" href="/home">Limpiar busqueda</a>
+        <a class="col-md-4" href="/gestorproductos">Limpiar busqueda</a>
       </div>
     </form>
     <section class="productos">

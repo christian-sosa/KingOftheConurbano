@@ -14,7 +14,7 @@
       </div>
       <div class="filtrar-categoria text-center col-md-4 row">
         <label class="col-6" for="title">Categoria</label>
-        <select class="form-control col-6" name="categoria_id">
+        <select class="form-control col-6 text-center" name="categoria_id">
           <option value="">---N/A---</option>
           @foreach ($categorias as $categoria)
             <option value="{{ $categoria['id']}}"
@@ -46,11 +46,13 @@
             <form action="/home/producto/{{$producto->id}}" method="get">
               <button type="submit" class="boton">Ver en detalle</button>
             </form>
-            <form action="/carrito/agregarproducto" method="post">
-              @csrf
-              <input type="hidden" name="producto_id" value="{{$producto->id}}">
-              <button type="submit" class="boton"><i class="fas fa-cart-plus"></i> Añadir al carro</button>
-            </form>
+            @if (Auth::user())
+              <form action="/carrito/agregarproducto" method="post">
+                @csrf
+                <input type="hidden" name="producto_id" value="{{$producto->id}}">
+                <button type="submit" class="boton"><i class="fas fa-cart-plus"></i> Añadir al carro</button>
+              </form>
+            @endif
           </div>
         </article>
       @endforeach
