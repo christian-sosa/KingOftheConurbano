@@ -5,62 +5,62 @@ form.onsubmit = function(event) {
     if(element.name != "_token" && element.name != "button" && element.name != "remember") {
       if(element.name != "telefono" && element.name != "avatar" && element.value == "") {
         error(element, "No puede dejar este campo vacío");
-  event.preventDefault();
+        event.preventDefault();
       }
 
       if(element.value != "") {
-        var password = "";
-
-        if(element.name == "name" && !validateName(element.value)) {
-          error(element, "El nombre ingresado es inválido");
+        if(element.name == "name") {
+          if(!validateName(element.value)) {
+            error(element, "El nombre ingresado es inválido");
             event.preventDefault();
-        } else {
-          quitarError(element);
+          } else {
+            quitarError(element);
+          }
         }
 
-        if(element.name == "email" && !validateEmail(element.value)) {
-          error(element, "El email ingresado es inválido");
+        if(element.name == "email") {
+          if(!validateEmail(element.value)) {
+            error(element, "El email ingresado es inválido");
             event.preventDefault();
-        } else {
-          quitarError(element);
+          } else {
+            quitarError(element);
+          }
         }
 
-        if(element.name == "password" && !validatePassword(element.value)) {
-          password = elements.value;
-          error(element, "La contraseña es demasiada corta (min 8 carácteres)");
+        if(element.name == "password") {
+          if(!validatePassword(element.value)) {
+            error(element, "La contraseña es demasiada corta (min 8 carácteres)");
             event.preventDefault();
-        } else {
-          quitarError(element);
+          } else {
+            quitarError(element);
+          }
         }
 
-        if(element.name == "password_confirmation" && !passwordConfirms(password, element.value)) {
-          error(element, "Las contraseñas no coinciden");
-          error(document.querySelector('input#password'), "Las contraseñas no coinciden");
+        if(element.name == "fecha_nac") {
+          if(!validateDate(element.value)) {
+            error(element, "La fecha de nacimiento que ingresaste no es válida");
             event.preventDefault();
-        } else {
-          quitarError(element);
-          quitarError(document.querySelector('input#password'));
+          } else {
+            quitarError(element);
+          }
         }
 
-        if(element.name == "fecha_nac" && element.value != "" && !validateDate(element.value)) {
-          error(element, "La fecha de nacimiento que ingresaste no es válida");
+        if(element.name == "telefono") {
+          if(!validatePhone(element.value)) {
+            error(element, "El número de teléfono ingresado no es válido");
             event.preventDefault();
-        } else {
-          quitarError(element);
+          } else {
+            quitarError(element);
+          }
         }
 
-        if(element.name == "telefono" && element.value != "" && !validatePhone(element.value)) {
-          error(element, "El número de teléfono ingresado no es válido");
+        if(element.name == "avatar") {
+          if(!validateImage(element.value)) {
+            error(element, "La imágen subida no tiene extensión válida (PNG, JPG, JPEG)");
             event.preventDefault();
-        } else {
-          quitarError(element);
-        }
-
-        if(element.name == "avatar" && element.value != "" && !validateImage(element.value)) {
-          error(element, "La imágen subida no tiene extensión válida (PNG, JPG, JPEG)");
-            event.preventDefault();
-        } else {
-          quitarError(element);
+          } else {
+            quitarError(element);
+          }
         }
       }
     }
@@ -82,6 +82,7 @@ function validatePassword(password) {
 }
 
 function passwordConfirms(password, confirmation) {
+  console.log(password + " | | " + confirmation);
   return password == confirmation;
 }
 
