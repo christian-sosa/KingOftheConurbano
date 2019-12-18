@@ -30,7 +30,7 @@
               </div>
               <div class="form-group row campo-valor">
                 <div class="campo col-md-6 text-center">
-                  <label for="password" class="col-form-label text-center text-md-right">{{ __('Contrasenia')}}</label>
+                  <label for="password" class="col-form-label text-center text-md-right">{{ __('Contraseña')}}</label>
                 </div>
                 <div class="valor col-md-6">
                   <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
@@ -50,7 +50,7 @@
                 <div class="col-12 text-center">
                   @if (Route::has('password.request'))
                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                      {{ __('Olvidaste tu contrasenia?') }}
+                      {{ __('Olvidaste tu contraseña?') }}
                     </a>
                   @endif
                 </div>

@@ -43,7 +43,7 @@
               </div>
               <div class="form-group row campo-valor">
                 <div class="campo col-md-6 text-center">
-                  <label for="password" class="col-form-label text-center text-md-right">{{ __('Contrasenia')}}</label>
+                  <label for="password" class="col-form-label text-center text-md-right">{{ __('Contraseña')}}</label>
                 </div>
                 <div class="valor col-md-6">
                   <input id="password" type="password" class="form-control text-center @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
@@ -56,7 +56,7 @@
               </div>
               <div class="form-group row campo-valor">
                 <div class="campo col-md-6 text-center">
-                  <label for="password-confirm" class="col-form-label">{{ __('Confirme la contrasenia')}}</label>
+                  <label for="password-confirm" class="col-form-label">{{ __('Confirme la contraseña')}}</label>
                 </div>
                 <div class="valor col-md-6">
                   <input id="password-confirm" type="password" class="form-control text-center" name="password_confirmation" autocomplete="new-password">
