@@ -10,7 +10,7 @@
     <form action="/gestorproductos" method="get">
       <button type="submit" class="boton"><i class="fas fa-arrow-left"></i>Volver</button>
     </form>
-    <form method="POST" action="/agregar" enctype="multipart/form-data" class="row">
+    <form method="POST" action="/agregar" enctype="multipart/form-data" class="row" id="formulario">
       @csrf
       <div class="titulo row col-12">
         <h2 class="text-center col-12">Agregar producto</h2>
@@ -67,4 +67,8 @@
     </form>
   </main>
 </div>
+@endsection
+
+@section('script')
+<script src="/js/gestorProducto.js"></script>
 @endsection
