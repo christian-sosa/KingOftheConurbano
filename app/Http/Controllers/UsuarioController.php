@@ -49,9 +49,14 @@ class UsuarioController extends Controller
       return redirect('/perfil');
     }
 
-    public function listaUsuarios()
+    public function listaUsuarios(Request $request)
     {
-      $usuarios = User::paginate(9);
+      if($request->email) {
+        $usuarios = User::where('email','like','%' . $request->email . '%')->paginate(9);
+      } else {
+        $usuarios = User::paginate(9);
+      }
+
       return view('gestorusuarios',compact("usuarios"));
     }
 

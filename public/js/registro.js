@@ -38,7 +38,7 @@ form.onsubmit = function(event) {
 
         if(element.name == "fecha_nac") {
           if(!validateDate(element.value)) {
-            error(element, "La fecha de nacimiento que ingresaste no es válida");
+            error(element, "La fecha de nacimiento que ingresaste no es válida (Debe ser mayor de 18)");
             event.preventDefault();
           } else {
             quitarError(element);
@@ -82,7 +82,6 @@ function validatePassword(password) {
 }
 
 function passwordConfirms(password, confirmation) {
-  console.log(password + " | | " + confirmation);
   return password == confirmation;
 }
 
@@ -109,10 +108,15 @@ function validateDate(date) {
   return (plus18(userBirthDay) && validDate(userBirthDay));
 }
 
-function plus18(userBirthDay) {
-  var actualDate = new Date();
+function calcular_edad(dob) {
+    var diff_ms = Date.now() - dob.getTime();
+    var age_dt = new Date(diff_ms);
 
-  return  ( ( ( userBirthDay.year + 18 ) <= actualDate.getFullYear() ) );
+    return Math.abs(age_dt.getUTCFullYear() - 1970);
+}
+
+function plus18(userBirthDay) {
+  return calcular_edad(new Date(userBirthDay.year, userBirthDay.month - 1, userBirthDay.day)) >= 18;
 }
 
 function validDate(userBirthDay) {

@@ -10,6 +10,17 @@
       <form action="/gestor" method="get">
         <button type="submit" class="boton"><i class="fas fa-arrow-left"></i>Volver</button>
       </form>
+      <form class="filtrar row" action="" method="get">
+        <div class="filtrar-email text-center col-7 row">
+          <label class="col-md-6" for="email">Email</label>
+          <input type="text" class="form-control col-md-6" name="email" id="email" value="@if(isset($_GET['email'])){{$_GET['email']}}@endif">
+        </div>
+        <div class="filtrar-botones text-center col-5 row">
+          <div class="col-2"></div>
+          <button class="boton col-md-4" type="submit">Aplicar filtro</button>
+          <a class="col-md-6" href="/gestorusuarios">Limpiar busqueda</a>
+        </div>
+      </form>
       <section class="usuarios">
         @foreach ($usuarios as $usuario)
           <article class="usuario">
@@ -34,7 +45,7 @@
                         <form action="/usuario/quitaradmin" method="post">
                           @csrf
                           <input type="hidden" name="usuario_id" value="{{$usuario->id}}">
-                          <button type="submit" class="boton"><i class="fas fa-cart-plus"></i>Quitar admin</button>
+                          <button type="submit" class="boton">Quitar admin</button>
                         </form>
                       @else
                         <li class="list-group-item">
@@ -43,7 +54,7 @@
                         <form action="/usuario/daradmin" method="post">
                           @csrf
                           <input type="hidden" name="usuario_id" value="{{$usuario->id}}">
-                          <button type="submit" class="boton"><i class="fas fa-cart-plus"></i>Dar admin</button>
+                          <button type="submit" class="boton">Hacer admin</button>
                         </form>
                       @endif
                     </ul>
