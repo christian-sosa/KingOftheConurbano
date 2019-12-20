@@ -23,44 +23,31 @@
       </form>
       <section class="usuarios">
         @foreach ($usuarios as $usuario)
-          <article class="usuario">
+          <article class="usuario col-12 col-sm-6 col-lg-4">
             <div class="card">
-              <div class="row">
-                <div class="col-md-5">
-                  <img src="/storage/{{$usuario->avatar}}" class="card-img-top" alt="avatar">
+
+                <img src="/storage/{{$usuario->avatar}}" class="card-img-top" alt="avatar">
+                <div class="card-body">
+                  <h4 class="card-text">Nombre: {{$usuario->name}}</h4>
+                  <h4 class="card-text">Email: {{$usuario->email}}</h4>
+                  @if($usuario->es_admin)
+                    <p class="card-text"><strong style="color: green;">Es admin</strong></p>
+                    <form action="/usuario/quitaradmin" class="text-center" method="post">
+                      @csrf
+                      <input type="hidden" name="usuario_id" value="{{$usuario->id}}">
+                      <button type="submit" class="boton">Quitar admin</button>
+                    </form>
+                  @else
+                    <p class="card-text"><strong style="color: red;">No es admin</strong></p>
+                    <form action="/usuario/daradmin" class="text-center" method="post">
+                      @csrf
+                      <input type="hidden" name="usuario_id" value="{{$usuario->id}}">
+                      <button type="submit" class="boton">Hacer admin</button>
+                    </form>
+                  @endif
+                  </ul>
                 </div>
-                <div class="col-md-7">
-                  <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
-                        <span class="card-text">{{$usuario->name}}</span>
-                      </li>
-                      <li class="list-group-item">
-                        <span class="card-text">{{$usuario->email}}</span>
-                      </li>
-                      @if($usuario->es_admin)
-                        <li class="list-group-item">
-                          Es admin
-                        </li>
-                        <form action="/usuario/quitaradmin" method="post">
-                          @csrf
-                          <input type="hidden" name="usuario_id" value="{{$usuario->id}}">
-                          <button type="submit" class="boton">Quitar admin</button>
-                        </form>
-                      @else
-                        <li class="list-group-item">
-                          No es admin
-                        </li>
-                        <form action="/usuario/daradmin" method="post">
-                          @csrf
-                          <input type="hidden" name="usuario_id" value="{{$usuario->id}}">
-                          <button type="submit" class="boton">Hacer admin</button>
-                        </form>
-                      @endif
-                    </ul>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </article>
         @endforeach

@@ -4,8 +4,10 @@ section {
   justify-content: space-around;
 }
 
-article.usuario {
-  width: 49.5%;
+div.card {
+  margin: 2rem 0;
+  background-color: #000;
+  color: #fff;
 }
 
 div.card img {
@@ -13,7 +15,7 @@ div.card img {
   height: 100%;
 }
 
-div.card ul li {
+.card-text {
   text-align: center;
 }
 
@@ -27,4 +29,8 @@ form.filtrar{
 
 form.filtrar div.filtrar-botones {
   justify-content: space-around;
+}
+
+form.filtrar div {
+  margin: 0.6rem 0;
 }

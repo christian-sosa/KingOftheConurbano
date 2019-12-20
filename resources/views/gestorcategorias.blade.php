@@ -13,7 +13,7 @@
     <form action="/agregarcategoria" method="get">
       <button type="submit" class="boton"><i class="fas fa-arrow-left"></i>Agregar nueva categoria</button>
     </form>
-    <section class="$categorias">
+    <section class="categorias">
       @foreach ($categorias as $categoria)
         <article class="categoria">
           <div class="nombre">

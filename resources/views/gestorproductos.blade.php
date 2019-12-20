@@ -13,13 +13,13 @@
       <button class="boton" type="submit" name="button"><i class="fas fa-plus"></i>Agregar producto</button>
     </form>
     <form class="filtrar row" action="" method="get">
-      <div class="filtrar-nombre text-center col-4 row">
-        <label class="col-md-6" for="nombre">Nombre</label>
-        <input type="text" class="form-control col-md-6" name="nombre" value="@if(isset($_GET['nombre'])){{$_GET['nombre']}}@endif">
+      <div class="filtrar-nombre text-center col-md-4 row">
+        <label class="col-6" for="nombre">Nombre</label>
+        <input type="text" class="form-control col-6" name="nombre" value="@if(isset($_GET['nombre'])){{$_GET['nombre']}}@endif">
       </div>
-      <div class="filtrar-categoria text-center col-4 row">
-        <label class="col-md-6" for="title">Categoria</label>
-        <select class="form-control col-md-6" name="categoria_id">
+      <div class="filtrar-categoria text-center col-md-4 row">
+        <label class="col-6" for="title">Categoria</label>
+        <select class="form-control col-6" name="categoria_id">
           <option value="">---N/A---</option>
           @foreach ($categorias as $categoria)
             <option value="{{ $categoria['id']}}"
@@ -29,12 +29,13 @@
           @endforeach
         </select>
       </div>
-      <div class="filtrar-botones text-center col-4 row">
+      <div class="filtrar-botones text-center col-md-4 row">
         <div class="col-md-2"></div>
-        <button class="boton col-md-4" type="submit">Aplicar filtro</button>
-        <a class="col-md-4" href="/gestorproductos">Limpiar busqueda</a>
+        <button class="boton col-4" type="submit">Aplicar filtro</button>
+        <a class="col-4" href="/gestorproductos">Limpiar busqueda</a>
       </div>
     </form>
+    {{$productos->links()}}
     <section class="productos">
       @foreach ($productos as $producto)
         <article class="producto">
@@ -68,6 +69,7 @@
         </article>
       @endforeach
     </section>
+    {{$productos->links()}}
   </main>
 </div>
 @endsection

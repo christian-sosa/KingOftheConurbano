@@ -8,11 +8,23 @@ article {
   background-color: #000;
   color: #fff;
   padding: 0.2rem;
-  width: 33%;
+  width: 100%;
   margin: 0.2rem 0;
   text-align: center;
 }
 
 article form {
   background-color: #fff;
+}
+
+@media (min-width: 582px) {
+  article {
+    width: 48%;
+  }
+}
+
+@media (min-width: 982px) {
+  article {
+    width: 33%;
+  }
 }

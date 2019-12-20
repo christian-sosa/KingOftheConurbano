@@ -9,7 +9,7 @@ article.producto {
 }
 
 div.imagen-producto, div.info-producto {
-  width: 49%;
+  width: 100%;
   text-align: center;
 }
 
@@ -68,4 +68,11 @@ div.total div.final {
 
 div.total div.vaciar-carro form button {
   padding: 0.6rem;
+}
+
+@media (min-width: 768px) {
+  div.imagen-producto, div.info-producto {
+    width: 49%;
+    text-align: center;
+  }
 }

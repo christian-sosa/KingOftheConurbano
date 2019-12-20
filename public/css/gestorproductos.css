@@ -66,6 +66,10 @@ form.filtrar div.filtrar-botones {
   justify-content: space-around;
 }
 
+form.filtrar div {
+  margin: 0.6rem 0;
+}
+
 @media (min-width: 482px) {
   article.producto {
     width: 48%;
